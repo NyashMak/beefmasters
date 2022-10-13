@@ -496,6 +496,7 @@ class ComposerStaticInit2996a3d2ae8cf0dd0d6a83d08cc4e863
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\CartItemController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartItemController.php',
         'App\\Http\\Controllers\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoryController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DiscountController' => __DIR__ . '/../..' . '/app/Http/Controllers/DiscountController.php',
@@ -519,6 +520,7 @@ class ComposerStaticInit2996a3d2ae8cf0dd0d6a83d08cc4e863
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Cart_Item' => __DIR__ . '/../..' . '/app/Models/Cart_Item.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
+        'App\\Models\\Delivery' => __DIR__ . '/../..' . '/app/Models/Delivery.php',
         'App\\Models\\Discount' => __DIR__ . '/../..' . '/app/Models/Discount.php',
         'App\\Models\\Inventory' => __DIR__ . '/../..' . '/app/Models/Inventory.php',
         'App\\Models\\Order_Detail' => __DIR__ . '/../..' . '/app/Models/Order_Detail.php',

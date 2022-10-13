@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\CartItemController' => $baseDir . '/app/Http/Controllers/CartItemController.php',
     'App\\Http\\Controllers\\CategoryController' => $baseDir . '/app/Http/Controllers/CategoryController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\DiscountController' => $baseDir . '/app/Http/Controllers/DiscountController.php',
@@ -31,6 +32,7 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Models\\Cart_Item' => $baseDir . '/app/Models/Cart_Item.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
+    'App\\Models\\Delivery' => $baseDir . '/app/Models/Delivery.php',
     'App\\Models\\Discount' => $baseDir . '/app/Models/Discount.php',
     'App\\Models\\Inventory' => $baseDir . '/app/Models/Inventory.php',
     'App\\Models\\Order_Detail' => $baseDir . '/app/Models/Order_Detail.php',
