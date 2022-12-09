@@ -56,9 +56,9 @@ Route::get('/admin', function () {
 // Categories Routing
 Route:: resource('categories', CategoryController::class);
 // Products Routing
-Route::post('products', [ProductController::class, 'delete'])->name('delete-product');
-Route::resource('products', ProductController::class);
 
+Route::resource('products', ProductController::class);
+Route::post('product/delete', [ProductController::class, 'delete'])->name('delete-product');
 
 // BeefMasters Routing
 // Must prefix the routes with BeefMasters when creating the middleware

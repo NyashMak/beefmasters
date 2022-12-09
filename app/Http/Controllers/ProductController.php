@@ -171,8 +171,15 @@ class ProductController extends Controller
         dd('Here');
     }
 
-    public function delete()
+    public function delete(Request $request)
     {
-        dd('Here');
+        $product = Product::where('id', $request->id)->first();
+        if(is_object($product)){
+            $product->delete();
+            return redirect()->route('products.index')->with('success', 'Product deleted successfully');
+        }
+
+        return redirect()->route('products.index')->with('error', 'This product does not exist');
+        
     }
 }

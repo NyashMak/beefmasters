@@ -24,16 +24,21 @@
               </a>
             </div>
             <div class="col-lg-4">
-              <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="{{route('delete-product')}}">
-                <div class="block-content py-5">
-                  <div class="fs-3 text-danger mb-1">
-                    <i class="fa fa-times"></i>
+              <form action="{{route('delete-product')}}" method="POST">
+                @csrf
+                <input hidden type="number" name="id" value="{{$product->id}}">
+                {{-- @method('DELETE') --}}
+                <button type="submit" class="block block-rounded block-link-shadow text-center h-100 mb-0" >
+                  <div class="block-content py-5">
+                    <div class="fs-3 text-danger mb-1">
+                      <i class="fa fa-times"></i>
+                    </div>
+                    <p class="fw-semibold fs-sm text-danger text-uppercase mb-0">
+                      Remove Product
+                    </p>
                   </div>
-                  <p class="fw-semibold fs-sm text-danger text-uppercase mb-0">
-                    Remove Product
-                  </p>
-                </div>
-              </a>
+                </button>
+              </form>
             </div>
           </div>
           <!-- END Quick Overview + Actions -->
