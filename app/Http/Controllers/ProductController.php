@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 use App\Models\Product;
+use App\Models\Shop;
 use App\Models\Category;
 use App\Models\Inventory;
 use App\Models\Discount;
@@ -25,7 +26,8 @@ class ProductController extends Controller
         // dd($products);
         $categories = Category::all();
         $discounts = Discount::all();
-        return view('admin.products.index', compact('products', 'categories', 'discounts'));
+        $shops = Shop::all();
+        return view('admin.products.index', compact('products', 'categories', 'discounts', 'shops'));
     }
 
     /**

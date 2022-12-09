@@ -1,6 +1,11 @@
 @extends('admin.layouts.app')
 @section('body')
       <!-- Main Container -->
+      <div class="block block-rounded">
+        <div class="block-header block-header-default">
+          <h3 class="block-title">Category Info</h3>
+        </div>
+      </div>
           <!-- Quick Overview + Actions -->
           <div class="row items-push">
             <div class="col-6 col-lg-4">

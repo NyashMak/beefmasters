@@ -1,5 +1,19 @@
 @extends('admin.layouts.app')
 @section('body')
+            @if(Session::has('success'))
+            <div class="alert alert-success mx-auto">
+                {{Session::get('success')}}
+            </div>
+            @endif
+            @if ($errors->any())
+            <div class="alert alert-danger mx-auto">
+                <ul>
+               @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                 @endforeach
+               </ul>
+            </div>
+            @endif
           <!-- Quick Overview -->
           <div class="row items-push">
             <div class="col-6 col-lg-3">
@@ -89,6 +103,7 @@
                   <thead>
                     <tr>
                       <th class="text-center" style="width: 100px;">ID</th>
+                      <th class="d-none d-sm-table-cell text-center">Shop</th>
                       <th class="d-none d-sm-table-cell text-center">Added</th>
                       <th class="d-none d-md-table-cell">Product</th>
                       <th>Status</th>
@@ -105,6 +120,9 @@
                           <strong>{{$product->id}}</strong>
                         </a>
                       </td>
+                      
+                      <td class="d-none d-sm-table-cell text-center fs-sm">{{$product->shop_id}}</td>
+
                       <td class="d-none d-sm-table-cell text-center fs-sm">{{$product->created_at}}</td>
                       <td class="d-none d-md-table-cell fs-sm">
                         <a class="fw-semibold" href="be_pages_ecom_product_edit.html">{{$product->name}}</a>

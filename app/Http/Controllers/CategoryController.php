@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Shop;
 use Hamcrest\Type\IsObject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -87,7 +88,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $shops = Shop::all();
+        return view('admin.categories.edit', compact('category','shops'));
     }
 
     /**
@@ -99,9 +101,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
-
-        // $scheduling->update($input);
+        $category = Category::where('id', $category->id)->first();
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->shop_id = $request->shop_id;
+        $category->save();
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully');
     }
 
     /**
@@ -112,6 +117,14 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        dd('HERE');
+    }
+
+    public function delete(Request $request){
+        $category = Category::where('id', $request->id)->first();
+        $category->delete();
+
+        return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
+
     }
 }

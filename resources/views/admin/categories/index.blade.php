@@ -127,7 +127,7 @@
                           <strong>$18,00</strong>
                         </td>
                         <td class="text-center fs-sm">
-                          <a class="btn btn-sm btn-alt-secondary" href="{{route('products.edit',$category->id)}}">
+                          <a class="btn btn-sm btn-alt-secondary" href="{{route('categories.edit',$category->id)}}">
                             <i class="fa fa-fw fa-eye"></i>
                           </a>
                           <a class="btn btn-sm btn-alt-secondary" href="javascript:void(0)">

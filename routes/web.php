@@ -55,6 +55,7 @@ Route::get('/admin', function () {
 })->name('dashboard');
 // Categories Routing
 Route:: resource('categories', CategoryController::class);
+Route:: post('category/delete', [CategoryController::class, 'delete'])->name('delete-category');
 // Products Routing
 
 Route::resource('products', ProductController::class);
