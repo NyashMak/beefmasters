@@ -59,9 +59,6 @@ class HtmlErrorRenderer implements ErrorRendererInterface
         $this->logger = $logger;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function render(\Throwable $exception): FlattenException
     {
         $headers = ['Content-Type' => 'text/html; charset='.$this->charset];
@@ -89,10 +86,10 @@ class HtmlErrorRenderer implements ErrorRendererInterface
     public function getStylesheet(): string
     {
         if (!$this->debug) {
-            return $this->include('assets/butcher/css/error.css');
+            return $this->include('assets/css/error.css');
         }
 
-        return $this->include('assets/butcher/css/exception.css');
+        return $this->include('assets/css/exception.css');
     }
 
     public static function isDebug(RequestStack $requestStack, bool $debug): \Closure

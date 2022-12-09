@@ -16,7 +16,7 @@
 		<div class="mobile-menu transparent-header">
 			<nav class="mobile-header">
 				<div class="header-logo">
-					<a href="index.html"><img src="assets/butcher/images/logo/01.png" alt="logo"></a>
+					<a href="index.html"><img src="{{asset('assets/butcher/images/logo/01.png')}}" alt="logo"></a>
 				</div>
 				<div class="header-bar">
 					<span></span>
@@ -79,11 +79,11 @@
 										<li><a href="{{route('about')}}">About</a></li>
 									</ul>
 									<div class="logo px-4" >
-										<a href="index.html"><img src="assets/butcher/images/logo/" alt="logo"></a>
+										<a href="index.html"><img src="{{asset('assets/butcher/images/logo/')}}" alt="logo"></a>
 									</div>
 									<ul class="lab-ul">
 										<li>
-											<a href="{{route('shop-page')}}">Shop</a>
+											<a href="{{route('shop.index')}}">Shop</a>
 										</li>
 										<li><a href="{{route('contact')}}">Contact</a></li>
 									</ul>
@@ -94,7 +94,7 @@
 												<div class="cart-content">
 													<div class="cart-item">
 														<div class="cart-img">
-															<a href="#"><img src="assets/butcher/images/shop/01.jpg" alt="cart"></a>
+															<a href="#"><img src="{{asset('assets/butcher/images/shop/01.jpg')}}" alt="cart"></a>
 														</div>
 														<div class="cart-des">
 															<a href="#">Product Title Hore</a>
@@ -106,7 +106,7 @@
 													</div>
 													<div class="cart-item">
 														<div class="cart-img">
-															<a href="#"><img src="assets/butcher/images/shop/02.jpg" alt="cart"></a>
+															<a href="#"><img src="{{asset('assets/butcher/images/shop/02.jpg')}}" alt="cart"></a>
 														</div>
 														<div class="cart-des">
 															<a href="#">Product Title Hore</a>

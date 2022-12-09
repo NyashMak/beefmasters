@@ -1,7 +1,8 @@
 @extends('shop_front.layouts.app')
 @section('body')
 	<!-- Banner Section Start Here -->
-	<div class="banner home-2 col-12" style="background-image: url(assets/butcher/images/banner/bg-images/bm_banner_01.png);">
+	{{-- <div class="banner home-2 col-12" style="background-image: url(assets/butcher/images/banner/bg-images/bm_banner_01.png);"> --}}
+	<div class="banner home-1 col-12" style="background-image: url(assets/butcher/images/banner/bg-images/bm_banner_01.png);">
 		<div class="banner-slider" >
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
@@ -9,11 +10,12 @@
 						{{-- <div class="overlay"></div> --}}
 						<div class="container">
 							<div class="row justify-content-center">
-								<div class="col-xl-6 col-md-10 col-12" >
+								{{-- <div class="col-xl-6 col-md-10 col-12"> --}}
+								<div class="col-xl-12 col-md-12 col-12" >
 									<div class="banner-content">
 										<img src="assets/butcher/images/banner/bg-images/1.png" alt="banner-text-img" class="mb-3 bt-thumb">
-										<h3 class="banner-title">Exceptional quality because our cattle only eat organic grass</h3>
-										<a href="#" class="lab-btn"><span>View Product</span></a>
+										<h3 class="banner-title" style="text-align: center">Exceptional quality because our cattle only eat organic grass</h3>
+										<a href="#" class="lab-btn"><span>View Products</span></a>
 									</div>
 								</div>
 							</div>
@@ -25,11 +27,12 @@
 						{{-- <div class="overlay"></div> --}}
 						<div class="container">
 							<div class="row justify-content-center">
-								<div class="col-xl-6 col-md-10 col-12">
+								{{-- <div class="col-xl-6 col-md-10 col-12"> --}}
+								<div class="col-xl-12 col-md-12 col-12">
 									<div class="banner-content">
 										<img src="assets/butcher/images/banner/bg-images/2.png" alt="banner-text-img" class="mb-3 bt-thumb">
-										<h3 class="banner-title">Best Meat Providers In Your Town Trusted Worldwide Since 2022</h3>
-										<a href="#" class="lab-btn"><span>View Product</span></a>
+										<h3 class="banner-title" style="text-align: center">Best Meat Providers In Your Town Trusted Worldwide Since 2022</h3>
+										<a href="#" class="lab-btn"><span>View Products</span></a>
 									</div>
 								</div>
 							</div>
@@ -41,11 +44,12 @@
 						{{-- <div class="overlay"></div> --}}
 						<div class="container">
 							<div class="row justify-content-center">
-								<div class="col-xl-6 col-md-10 col-12">
+								{{-- <div class="col-xl-6 col-md-10 col-12"> --}}
+								<div class="col-xl-12 col-md-12 col-12">
 									<div class="banner-content">
 										<img src="assets/butcher/images/banner/bg-images/3.png" alt="banner-text-img" class="mb-3 bt-thumb">
-										<h3 class="banner-title">Best Meat Providers In Your Town Trusted Worldwide Since 2022</h3>
-										<a href="#" class="lab-btn"><span>View Product</span></a>
+										<h3 class="banner-title" style="text-align: center">Best Meat Providers In Your Town Trusted Worldwide Since 2022</h3>
+										<a href="#" class="lab-btn"><span>View Products</span></a>
 									</div>
 								</div>
 							</div>

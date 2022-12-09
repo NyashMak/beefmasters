@@ -1,12 +1,27 @@
 @extends('shop_front.layouts.app')
 @section('body')    
+<style>
+    .cart-weight{
+    width: 90%;
+    height: 38px;
+    border: 1px solid #f0f0f0;
+    color: #716c80;
+    outline: none;
+    -webkit-appearance: none;
+    z-index: 1;
+    background: transparent;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    }
+</style>
 
         <!-- Page Header Section Start Here -->
-        <section class="page-header bg_img padding-tb">
+        <section class="page-header bg_img padding-tb" style="background-image: url({{asset('assets/butcher/images/banner/bg-images/bm_banner_01.png')}});">
             <div class="overlay"></div>
             <div class="container">
                 <div class="page-header-content-area">
-                    <h4 class="ph-title">Product Name</h4>
+                    <h4 class="ph-title">{{$product->name}}</h4>
                 </div>
             </div>
         </section>
@@ -23,38 +38,18 @@
                                     <div class="product-thumb">
                                         <div class="swiper-container gallery-top">
                                             <div class="swiper-wrapper">
+                                                {{-- Loop of pictures to start here --}}
                                                 <div class="swiper-slide">
                                                     <div class="shop-item">
                                                         <div class="shop-thumb">
-                                                            <img src="assets/butcher/images/product/single/top/01.png" alt="shop-single">
+                                                            <img src="{{asset('assets/butcher/images/product/single/top/01.png')}}" alt="shop-single">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="swiper-slide">
                                                     <div class="shop-item">
                                                         <div class="shop-thumb">
-                                                            <img src="assets/butcher/images/product/single/top/01.png" alt="shop-single">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div class="shop-item">
-                                                        <div class="shop-thumb">
-                                                            <img src="assets/butcher/images/product/single/top/01.png" alt="shop-single">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div class="shop-item">
-                                                        <div class="shop-thumb">
-                                                            <img src="assets/butcher/images/product/single/top/01.png" alt="shop-single">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div class="shop-item">
-                                                        <div class="shop-thumb">
-                                                            <img src="assets/butcher/images/product/single/top/01.png" alt="shop-single">
+                                                            <img src="{{asset('assets/butcher/images/product/single/top/01.png')}}" alt="shop-single">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -69,35 +64,14 @@
                                                 <div class="swiper-slide">
                                                     <div class="shop-item">
                                                         <div class="shop-thumb">
-                                                            <img src="assets/butcher/images/product/01.jpg" alt="shop-single">
+                                                            <img src="{{asset('assets/butcher/images/product/01.jpg')}}" alt="shop-single">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="swiper-slide">
                                                     <div class="shop-item">
                                                         <div class="shop-thumb">
-                                                            <img src="assets/butcher/images/product/02.jpg" alt="shop-single">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div class="shop-item">
-                                                        <div class="shop-thumb">
-                                                            <img src="assets/butcher/images/product/03.jpg" alt="shop-single">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div class="shop-item">
-                                                        <div class="shop-thumb">
-                                                            <img src="assets/butcher/images/product/04.jpg" alt="shop-single">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div class="shop-item">
-                                                        <div class="shop-thumb">
-                                                            <img src="assets/butcher/images/product/05.jpg" alt="shop-single">
+                                                            <img src="{{asset('assets/butcher/images/product/02.jpg')}}" alt="shop-single">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -107,7 +81,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="post-content">
-                                        <h4>Product Text here</h4>
+                                        <h4>{{$product->name}}</h4>
                                         <p class="rating">
                                             <i class="far fa-star"></i>
                                             <i class="far fa-star"></i>
@@ -117,44 +91,31 @@
                                             (3 review)
                                         </p>
                                         <h4>
-                                            $ 340.00
+                                            R{{$product->price}} /kg
                                         </h4>
                                         <h5>
                                             Product Description
                                         </h5>
                                         <p>
-                                            Energistia an deliver atactica metrcs after avsionary Apropria trnsition enterpris an sources applications emerging 	psd template communities.
+                                            {{$product->description}}
                                         </p>
                                         <form method="GET" action="{{route('cart')}}">
-                                            <div class="select-product size">
-                                                <select>
-                                                    <option>Select Size</option>
-                                                    <option>SM</option>
-                                                    <option>MD</option>
-                                                    <option>LG</option>
-                                                    <option>XL</option>
-                                                    <option>XXL</option>
-                                                </select>
-                                                <i class="fas fa-angle-down"></i>
+                                            <input hidden type="number" name="product_id" value="{{$product->id}}">
+                                            <input hidden type="number" name="price" value="{{$product->price}}">
+                                            <div>
+                                                <label for="weight">Weight</label>
+                                                <input class="cart-weight" type="number" name="weight" value="" placeholder="kg/s">                                  
                                             </div>
-                                            <div class="select-product color">
-                                                <select>
-                                                    <option>Select Color</option>
-                                                    <option>Pink</option>
-                                                    <option>Ash</option>
-                                                    <option>Red</option>
-                                                    <option>White</option>
-                                                    <option>Blue</option>
-                                                </select>
-                                                <i class="fas fa-angle-down"></i>
-                                            </div>
-                                            <div class="cart-plus-minus">
+                                            
+                                            <div class="cart-plus-minus">                                                
                                                 <div class="dec qtybutton">-</div>
-                                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+                                                <input class="cart-plus-minus-box" type="number" name="quantity" value="1" >
                                                 <div class="inc qtybutton">+</div>
                                             </div>
+                    
                                             <div class="discount-code">
-                                                <input type="text" placeholder="Enter Discount Code">
+                                                <label for="">Discount Code</label>
+                                                <input type="text" name="discount_code" placeholder="Enter Discount Code">
                                             </div>
                                             <button type="submit">Add To Cart</button>
                                         </form>
@@ -172,7 +133,7 @@
                                     <ul class="agri-ul content">
                                         <li style="background-color: white;">
                                             <div class="post-thumb">
-                                                <img src="assets/butcher/images/team/01.jpg" alt="shop">
+                                                <img src="{{asset('assets/butcher/images/team/01.jpg')}}" alt="shop">
                                             </div>
                                             <div class="post-content">
                                                 <div class="entry-meta">
@@ -195,7 +156,7 @@
                                         </li>
                                         <li style="background-color: white;">
                                             <div class="post-thumb">
-                                                <img src="assets/butcher/images/team/02.jpg" alt="shop">
+                                                <img src="{{asset('assets/butcher/images/team/02.jpg')}}" alt="shop">
                                             </div>
                                             <div class="post-content">
                                                 <div class="entry-meta">
@@ -218,7 +179,7 @@
                                         </li>
                                         <li style="background-color: white;">
                                             <div class="post-thumb">
-                                                <img src="assets/butcher/images/team/03.jpg" alt="shop">
+                                                <img src="{{asset('assets/butcher/images/team/03.jpg')}}" alt="shop">
                                             </div>
                                             <div class="post-content">
                                                 <div class="entry-meta">
@@ -241,7 +202,7 @@
                                         </li>
                                         <li style="background-color: white;">
                                             <div class="post-thumb">
-                                                <img src="assets/butcher/images/team/04.jpg" alt="shop">
+                                                <img src="{{asset('assets/butcher/images/team/04.jpg')}}" alt="shop">
                                             </div>
                                             <div class="post-content">
                                                 <div class="entry-meta">
@@ -301,7 +262,7 @@
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                     <div class="post-item">
                                         <div class="post-thumb">
-                                            <img src="assets/butcher/images/product/01.jpg" alt="shop">
+                                            <img src="{{asset('assets/butcher/images/product/01.jpg')}}" alt="shop">
                                         </div>
                                         <div class="post-content">
                                             <ul class="agri-ul">

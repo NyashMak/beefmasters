@@ -15,7 +15,13 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->string('sid')->nullable();
+            $table->string('name');
+            $table->string('description');
+            $table->unsignedBigInteger('shop_id')->index();
             $table->timestamps();
+
+            $table->foreign('shop_id')->references('id')->on('shops');
         });
     }
 

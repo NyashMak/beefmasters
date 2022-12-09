@@ -20,14 +20,14 @@
 
     <!-- Icons -->
     <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-    <link rel="shortcut icon" href="assets/admin/media/favicons/favicon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/admin/media/favicons/favicon-192x192.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/admin/media/favicons/apple-touch-icon-180x180.png">
+    <link rel="shortcut icon" href="{{asset('assets/admin/media/favicons/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{asset('assets/admin/media/favicons/favicon-192x192.png')}}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets/admin/media/favicons/apple-touch-icon-180x180.png')}}">
     <!-- END Icons -->
 
     <!-- Stylesheets -->
     <!-- Dashmix framework -->
-    <link rel="stylesheet" id="css-main" href="assets/admin/css/dashmix.min.css">
+    <link rel="stylesheet" id="css-main" href="{{asset('assets/admin/css/dashmix.min.css')}}">
 
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <!-- <link rel="stylesheet" id="css-theme" href="assets/butcher/css/themes/xwork.min.css"> -->
@@ -94,12 +94,12 @@
       <!-- Side Overlay-->
       <aside id="side-overlay">
         <!-- Side Header -->
-        <div class="bg-image" style="background-image: url('assets/butcher/media/various/bg_side_overlay_header.jpg');">
+        <div class="bg-image" style="background-image: url('assets/admin/media/various/bg_side_overlay_header.jpg');">
           <div class="bg-primary-op">
             <div class="content-header">
               <!-- User Avatar -->
               <a class="img-link me-1" href="be_pages_generic_profile.html">
-                <img class="img-avatar img-avatar48" src="assets/butcher/media/avatars/avatar10.jpg" alt="">
+                <img class="img-avatar img-avatar48" src="assets/admin/media/avatars/avatar10.jpg" alt="">
               </a>
               <!-- END User Avatar -->
 
@@ -580,19 +580,40 @@
       Core libraries and functionality
       webpack is putting everything together at assets/butcher/_js/main/app.js
     -->
-    <script src="assets/admin/js/dashmix.app.min.js"></script>
+    <script src="{{asset('assets/admin/js/dashmix.app.min.js')}}"></script>
 
     <!-- jQuery (required for jQuery Sparkline plugin) -->
-    <script src="assets/admin/js/lib/jquery.min.js"></script>
+    <script src="{{asset('assets/admin/js/lib/jquery.min.js')}}"></script>
 
     <!-- Page JS Plugins -->
-    <script src="assets/admin/js/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
-    <script src="assets/admin/js/plugins/chart.js/chart.min.js"></script>
+    <script src="{{asset('assets/admin/js/plugins/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
+    <script src="{{asset('assets/admin/js/plugins/chart.js/chart.min.js')}}"></script>
 
     <!-- Page JS Code -->
-    <script src="assets/admin/js/pages/be_pages_dashboard_v1.min.js"></script>
+    <script src="{{asset('assets/admin/js/pages/be_pages_dashboard_v1.min.js')}}"></script>
 
     <!-- Page JS Helpers (jQuery Sparkline plugin) -->
     <script>Dashmix.helpersOnLoad(['jq-sparkline']);</script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $('.show_confirm').click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                    title: `Are you sure you want to delete this record?`,
+                    text: "If you delete this, it will be gone forever.",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                    }
+                });
+        });
+    </script>
   </body>
 </html>

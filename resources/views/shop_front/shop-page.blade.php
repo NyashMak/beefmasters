@@ -1,11 +1,11 @@
 @extends('shop_front.layouts.app')
 @section('body')      
         <!-- Page Header Section Start Here -->
-        <section class="page-header bg_img padding-tb">
+        <section class="page-header bg_img padding-tb" style="background-image: url(assets/butcher/images/banner/bg-images/bm_banner_01.png);">
             <div class="overlay"></div>
             <div class="container">
                 <div class="page-header-content-area">
-                    <h4 class="ph-title">Beef Masters Products</h4>
+                    <h4 class="ph-title">All Products</h4>
                 </div>
             </div>
         </section>
@@ -27,331 +27,47 @@
                                 </div>
 
                                 <div class="shop-product-wrap grids row justify-content-center">
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <div class="product-item" >
-                                            <div class="product-thumb">
-                                                <img src="assets/butcher/images/product/01.jpg" alt="shope">
-                                                <div class="product-action-link">
-                                                    <a href="assets/butcher/images/product/01.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
-                                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                    <a href="#"><i class="icofont-cart-alt"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <h6><a href="#">Product Text Here</a></h6>
-                                                <h6>$200</h6>
-                                            </div>
-                                        </div>
-                                        <div class="product-list-item">
-                                            <div class="product-thumb">
-                                                <img src="assets/butcher/images/product/01.jpg" alt="shope">
-                                                <div class="product-action-link">
-                                                    <a href="assets/butcher/images/product/01.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
-                                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                    <a href="#"><i class="icofont-cart-alt"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <h6><a href="#">Product Title Here</a></h6>
-                                                <h6>
-                                                    $200
-                                                </h6>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @if($products)
+                                    @foreach($products as $product)
                                     <div class="col-lg-4 col-md-6 col-12">
                                         <div class="product-item">
                                             <div class="product-thumb">
-                                                <img src="assets/butcher/images/product/02.jpg" alt="shope">
+                                                <img src="{{asset('assets/butcher/images/product/02.jpg')}}" alt="shope">
                                                 <div class="product-action-link">
                                                     <a href="" data-rel="lightcase"><i class="icofont-eye"></i></a>
                                                     <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                    <a href="{{route('show')}}"><i class="icofont-cart-alt"></i></a>
+                                                    <a href="{{route('shop.show', $product->id)}}"><i class="icofont-cart-alt"></i></a>
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <h6><a href="#">Product Text Here</a></h6>
-                                                <h6>$200</h6>
+                                                <h6><a href="#">{{$product->name}}</a></h6>
+                                                <h6>R{{$product->price}}</h6>
                                             </div>
                                         </div>
                                         <div class="product-list-item">
                                             <div class="product-thumb">
-                                                <img src="assets/butcher/images/product/02.jpg" alt="shope">
+                                                <img src="{{asset('assets/butcher/images/product/02.jpg')}}" alt="shope">
                                                 <div class="product-action-link">
-                                                    <a href="assets/butcher/images/product/02.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
+                                                    <a href="{{asset('assets/butcher/images/product/02.jpg')}}" data-rel="lightcase"><i class="icofont-eye"></i></a>
                                                     <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                    <a href="#"><i class="icofont-cart-alt"></i></a>
+                                                    <a href="{{route('shop.show', $product->id)}}"><i class="icofont-cart-alt"></i></a>
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <h6><a href="#">Product Title Here</a></h6>
+                                                <h6><a href="{{route('shop.show', $product->id)}}">{{$product->name}}</a></h6>
                                                 <h6>
-                                                    $200
+                                                    R{{$product->price}}
                                                 </h6>
                                                 <p>
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                                    {{$product->description}}
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <div class="product-item">
-                                            <div class="product-thumb">
-                                                <img src="assets/butcher/images/product/03.jpg" alt="shope">
-                                                <div class="product-action-link">
-                                                    <a href="assets/butcher/images/product/03.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
-                                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                    <a href="#"><i class="icofont-cart-alt"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <h6><a href="#">Product Text Here</a></h6>
-                                                <h6>$200</h6>
-                                            </div>
-                                        </div>
-                                        <div class="product-list-item">
-                                            <div class="product-thumb">
-                                                <img src="assets/butcher/images/product/03.jpg" alt="shope">
-                                                <div class="product-action-link">
-                                                    <a href="assets/butcher/images/product/03.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
-                                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                    <a href="#"><i class="icofont-cart-alt"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <h6><a href="#">Product Title Here</a></h6>
-                                                <h6>
-                                                    $200
-                                                </h6>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <div class="product-item">
-                                            <div class="product-thumb">
-                                                <img src="assets/butcher/images/product/04.jpg" alt="shope">
-                                                <div class="product-action-link">
-                                                    <a href="assets/butcher/images/product/04.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
-                                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                    <a href="#"><i class="icofont-cart-alt"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <h6><a href="#">Product Text Here</a></h6>
-                                                <h6>$200</h6>
-                                            </div>
-                                        </div>
-                                        <div class="product-list-item">
-                                            <div class="product-thumb">
-                                                <img src="assets/butcher/images/product/04.jpg" alt="shope">
-                                                <div class="product-action-link">
-                                                    <a href="assets/butcher/images/product/04.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
-                                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                    <a href="#"><i class="icofont-cart-alt"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <h6><a href="#">Product Title Here</a></h6>
-                                                <h6>
-                                                    $200
-                                                </h6>
-                                                <p>
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <div class="product-item">
-                                            <div class="product-thumb">
-                                                <img src="assets/butcher/images/product/05.jpg" alt="shope">
-                                                <div class="product-action-link">
-                                                    <a href="assets/butcher/images/product/05.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
-                                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                    <a href="#"><i class="icofont-cart-alt"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <h6><a href="#">Product Text Here</a></h6>
-                                                <h6>$200</h6>
-                                            </div>
-                                        </div>
-                                        <div class="product-list-item">
-                                            <div class="product-thumb">
-                                                <img src="assets/butcher/images/product/05.jpg" alt="shope">
-                                                <div class="product-action-link">
-                                                    <a href="assets/butcher/images/product/05.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
-                                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                    <a href="#"><i class="icofont-cart-alt"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <h6><a href="#">Product Title Here</a></h6>
-                                                <h6>
-                                                    $200
-                                                </h6>
-                                                <p>
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <div class="product-item">
-                                            <div class="product-thumb">
-                                                <img src="assets/butcher/images/product/06.jpg" alt="shope">
-                                                <div class="product-action-link">
-                                                    <a href="assets/butcher/images/product/06.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
-                                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                    <a href="#"><i class="icofont-cart-alt"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <h6><a href="#">Product Text Here</a></h6>
-                                                <h6>$200</h6>
-                                            </div>
-                                        </div>
-                                        <div class="product-list-item">
-                                            <div class="product-thumb">
-                                                <img src="assets/butcher/images/product/06.jpg" alt="shope">
-                                                <div class="product-action-link">
-                                                    <a href="assets/butcher/images/product/06.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
-                                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                    <a href="#"><i class="icofont-cart-alt"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <h6><a href="#">Product Title Here</a></h6>
-                                                <h6>
-                                                    $200
-                                                </h6>
-                                                <p>
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <div class="product-item">
-                                            <div class="product-thumb">
-                                                <img src="assets/butcher/images/product/04.jpg" alt="shope">
-                                                <div class="product-action-link">
-                                                    <a href="assets/butcher/images/product/04.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
-                                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                    <a href="#"><i class="icofont-cart-alt"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <h6><a href="#">Product Text Here</a></h6>
-                                                <h6>$200</h6>
-                                            </div>
-                                        </div>
-                                        <div class="product-list-item">
-                                            <div class="product-thumb">
-                                                <img src="assets/butcher/images/product/04.jpg" alt="shope">
-                                                <div class="product-action-link">
-                                                    <a href="assets/butcher/images/product/04.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
-                                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                    <a href="#"><i class="icofont-cart-alt"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <h6><a href="#">Product Title Here</a></h6>
-                                                <h6>
-                                                    $200
-                                                </h6>
-                                                <p>
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <div class="product-item">
-                                            <div class="product-thumb">
-                                                <img src="assets/butcher/images/product/05.jpg" alt="shope">
-                                                <div class="product-action-link">
-                                                    <a href="assets/butcher/images/product/05.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
-                                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                    <a href="#"><i class="icofont-cart-alt"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <h6><a href="#">Product Text Here</a></h6>
-                                                <h6>$200</h6>
-                                            </div>
-                                        </div>
-                                        <div class="product-list-item">
-                                            <div class="product-thumb">
-                                                <img src="assets/butcher/images/product/05.jpg" alt="shope">
-                                                <div class="product-action-link">
-                                                    <a href="assets/butcher/images/product/05.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
-                                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                    <a href="#"><i class="icofont-cart-alt"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <h6><a href="#">Product Title Here</a></h6>
-                                                <h6>
-                                                    $200
-                                                </h6>
-                                                <p>
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <div class="product-item">
-                                            <div class="product-thumb">
-                                                <img src="assets/butcher/images/product/06.jpg" alt="shope">
-                                                <div class="product-action-link">
-                                                    <a href="assets/butcher/images/product/06.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
-                                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                    <a href="#"><i class="icofont-cart-alt"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <h6><a href="#">Product Text Here</a></h6>
-                                                <h6>$200</h6>
-                                            </div>
-                                        </div>
-                                        <div class="product-list-item">
-                                            <div class="product-thumb">
-                                                <img src="assets/butcher/images/product/06.jpg" alt="shope">
-                                                <div class="product-action-link">
-                                                    <a href="assets/butcher/images/product/06.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
-                                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                    <a href="#"><i class="icofont-cart-alt"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <h6><a href="#">Product Title Here</a></h6>
-                                                <h6>
-                                                    $200
-                                                </h6>
-                                                <p>
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
+                                    @else
+                                        <div>No Products available</div>
+                                    @endif
                                 </div>
                                 
                                 <div class="paginations">
@@ -398,57 +114,23 @@
                                         <h5>All Categories</h5>
                                     </div>
                                     <div class="widget-wrapper">
-                                        <ul class="lab-ul shop-menu">
-                                            <li>
-                                                <a href="#0">Apple</a>
-                                                <ul class="lab-ul shop-submenu">
-                                                    <li><a href="#">Apple 1</a></li>
-                                                    <li><a href="#">Apple 2</a></li>
-                                                    <li><a href="#">Apple 3</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#0">Orange</a>
-                                                <ul class="lab-ul shop-submenu">
-                                                    <li><a href="#">Orange 1</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#0">Tomato</a>
-                                                <ul class="lab-ul shop-submenu">
-                                                    <li><a href="#">Tomato 1</a></li>
-                                                    <li><a href="#">Tomato 2</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#0">Honey</a>
-                                                <ul class="lab-ul shop-submenu">
-                                                    <li><a href="#">Honey 1</a></li>
-                                                    <li><a href="#">Honey 2</a></li>
-                                                    <li><a href="#">Honey 3</a></li>
-                                                    <li><a href="#">Honey 4</a></li>
-                                                    <li><a href="#">Honey 5</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#0">Banana</a>
-                                                <ul class="lab-ul shop-submenu">
-                                                    <li><a href="#">Banana 1</a></li>
-                                                    <li><a href="#">Banana 2</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#0">Blueberry</a>
-                                                <ul class="lab-ul shop-submenu">
-                                                    <li><a href="#">Blueberry 1</a></li>
-                                                    <li><a href="#">Blueberry 2</a></li>
-                                                    <li><a href="#">Blueberry 3</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#0">Lettuce</a>
-                                                <ul class="lab-ul shop-submenu">
-                                                    <li><a href="#">Lettuce 1</a></li>
-                                                    <li><a href="#">Lettuce 2</a></li>
-                                                    <li><a href="#">Lettuce 3</a></li>
-                                                    <li><a href="#">Lettuce 4</a></li>
-                                                    <li><a href="#">Lettuce 5</a></li>
-                                                </ul>
-                                            </li>
+                                        <ul class="lab-ul shop-menu">   
+                                            @if($categories)      
+                                                @foreach($categories as $category)                                  
+                                                <li><a href="#0">{{$category->name}}</a>
+                                                    <ul class="lab-ul shop-submenu">
+                                                        @if($products)
+                                                            @foreach($products as $product)
+                                                                @if($product->category_id == $category->id)
+                                                                <li><a href="#">{{$product->name}}</a></li>
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
+                                                    </ul>
+                                                </li>
+                                                @endforeach
+                                            @endif
+                                            
                                         </ul>
                                     </div>
                                 </div>
@@ -460,40 +142,13 @@
                                     <ul class="lab-ul widget-wrapper">
                                         <li class="d-flex flex-wrap justify-content-between">
                                             <div class="post-thumb">
-                                                <a href="blog-single.html"><img src="assets/butcher/images/product/01.jpg" alt="product"></a>
+                                                <a href="blog-single.html"><img src="{{('assets/butcher/images/product/01.jpg')}}" alt="product"></a>
                                             </div>
                                             <div class="post-content">
 												<a href="blog-single.html"><h6>Conveniently utilize premier metho.</h6></a>
                                                 <p>04 February 2019</p>
                                             </div>
 										</li>
-										<li class="d-flex flex-wrap justify-content-between">
-                                            <div class="post-thumb">
-                                                <a href="blog-single.html"><img src="assets/butcher/images/product/02.jpg" alt="product"></a>
-                                            </div>
-                                            <div class="post-content">
-												<a href="blog-single.html"><h6>Seamlessly fashion customiz before.</h6></a>
-                                                <p>04 February 2019</p>
-                                            </div>
-										</li>
-										<li class="d-flex flex-wrap justify-content-between">
-                                            <div class="post-thumb">
-                                                <a href="blog-single.html"><img src="assets/butcher/images/product/03.jpg" alt="product"></a>
-                                            </div>
-                                            <div class="post-content">
-												<a href="blog-single.html"><h6>Conveniently utilize premier metho.</h6></a>
-                                                <p>04 February 2019</p>
-                                            </div>
-										</li>
-										<li class="d-flex flex-wrap justify-content-between">
-                                            <div class="post-thumb">
-                                                <a href="blog-single.html"><img src="assets/butcher/images/product/04.jpg" alt="product"></a>
-                                            </div>
-                                            <div class="post-content">
-												<a href="blog-single.html"><h6>Seamlessly fashion customiz before.</h6></a>
-                                                <p>04 February 2019</p>
-                                            </div>
-                                        </li>
                                     </ul>
                                 </div>
                             </aside>

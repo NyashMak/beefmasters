@@ -8,7 +8,7 @@
 			D<span class="opacity-75">x</span>
 		  </span>
 		  <span class="smini-hidden">
-			Dash<span class="opacity-75">mix</span>
+			Beef<span class="opacity-75">Masters</span>
 		  </span>
 		</a>
 		<!-- END Logo -->
@@ -60,23 +60,33 @@
 					</a>
 				  </li>
 				  <li class="nav-main-item">
-					<a class="nav-main-link" href="be_pages_ecom_order.html">
-					  <span class="nav-main-link-name">Order</span>
+					<a class="nav-main-link" href="be_pages_ecom_products.html">
+					  <span class="nav-main-link-name">Deliveries</span>
 					</a>
 				  </li>
 				  <li class="nav-main-item">
-					<a class="nav-main-link" href="be_pages_ecom_products.html">
+					<a class="nav-main-link" href="">
+					  <span class="nav-main-link-name">Inventory</span>
+					</a>
+				  </li>
+				  <li class="nav-main-item">
+					<a class="nav-main-link" href="{{route('categories.index')}}">
+					  <span class="nav-main-link-name">Categories</span>
+					</a>
+				  </li>
+				  <li class="nav-main-item">
+					<a class="nav-main-link" href="{{route('products.index')}}">
 					  <span class="nav-main-link-name">Products</span>
 					</a>
 				  </li>
 				  <li class="nav-main-item">
-					<a class="nav-main-link" href="be_pages_ecom_product_edit.html">
-					  <span class="nav-main-link-name">Product Edit</span>
+					<a class="nav-main-link" href="">
+					  <span class="nav-main-link-name">Discounts</span>
 					</a>
 				  </li>
 				  <li class="nav-main-item">
-					<a class="nav-main-link" href="be_pages_ecom_customer.html">
-					  <span class="nav-main-link-name">Customer</span>
+					<a class="nav-main-link" href="">
+					  <span class="nav-main-link-name">Customers</span>
 					</a>
 				  </li>
 

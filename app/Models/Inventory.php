@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Inventory extends Model
 {
+    public $table = "inventories";
     use HasFactory;
+    protected $fillable = [
+        'sid',
+        'quantity',
+    ];
 }

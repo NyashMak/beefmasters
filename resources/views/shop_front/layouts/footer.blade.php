@@ -2,14 +2,14 @@
 <footer>
 	<div class="footer-top relative padding-tb">
 		<div class="shape-images">
-			<img src="assets/butcher/images/shape-images/03.png" alt="shape-images">
+			<img src="{{asset('assets/butcher/images/shape-images/03.png')}}" alt="shape-images">
 		</div>
 		<div class="container">
 			<div class="section-wrapper row">
 				<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s">
 					<div class="post-item">
 						<div class="footer-logo mb-3">
-							<img src="assets/butcher/images/logo/01.png" alt="footer-logo">
+							<img src="{{asset('assets/butcher/images/logo/01.png')}}" alt="footer-logo">
 						</div>
 						<p>Continually productize compelling quality dome packed with all Elated Themes ently utilize website and creating pages corporate </p>
 						<ul class="lab-ul footer-location">
@@ -50,7 +50,7 @@
 						<div class="lab-ul footer-post">
 							<div class="media mb-3">
 								<div class="fp-thumb mr-3">
-									<img src="assets/butcher/images/products/product/01.png" alt="recent-post">
+									<img src="{{asset('assets/butcher/images/products/product/01.png')}}" alt="recent-post">
 								</div>
 								<div class="media-body">
 									<a href="#"><h6 class="mt-0">Fresh Mutton Cuts</h6></a>
@@ -68,7 +68,7 @@
 							</div>
 							<div class="media mb-3">
 								<div class="fp-thumb mr-3">
-									<img src="assets/butcher/images/products/product/02.png" alt="recent-post">
+									<img src="{{asset('assets/butcher/images/products/product/02.png')}}" alt="recent-post">
 								</div>
 								<div class="media-body">
 									<a href="#"><h6 class="mt-0">Fresh Mutton Cuts</h6></a>
@@ -86,7 +86,7 @@
 							</div>
 							<div class="media mb-3">
 								<div class="fp-thumb mr-3">
-									<img src="assets/butcher/images/products/product/03.png"  alt="recent-post">
+									<img src="{{asset('assets/butcher/images/products/product/03.png')}}"  alt="recent-post">
 								</div>
 								<div class="media-body">
 									<a href="#"><h6 class="mt-0">Fresh Mutton Cuts</h6></a>
@@ -112,31 +112,31 @@
 						</div>
 						<div class="lab-ul footer-gellary">
 							<figure class="figure">
-								<a href="#"><img src="assets/butcher/images/gallery/01.jpg" class="img-fluid rounded" alt="footer-gellary"></a>
+								<a href="#"><img src="{{asset('assets/butcher/images/gallery/01.jpg')}}" class="img-fluid rounded" alt="footer-gellary"></a>
 							</figure>
 							<figure class="figure">
-								<a href="#"><img src="assets/butcher/images/gallery/02.jpg" class="img-fluid rounded" alt="footer-gellary"></a>
+								<a href="#"><img src="{{asset('assets/butcher/images/gallery/02.jpg')}}" class="img-fluid rounded" alt="footer-gellary"></a>
 							</figure>
 							<figure class="figure">
-								<a href="#"><img src="assets/butcher/images/gallery/03.jpg" class="img-fluid rounded" alt="footer-gellary"></a>
+								<a href="#"><img src="{{asset('assets/butcher/images/gallery/03.jpg')}}" class="img-fluid rounded" alt="footer-gellary"></a>
 							</figure>
 							<figure class="figure">
-								<a href="#"><img src="assets/butcher/images/gallery/04.jpg" class="img-fluid rounded" alt="footer-gellary"></a>
+								<a href="#"><img src="{{asset('assets/butcher/images/gallery/04.jpg')}}" class="img-fluid rounded" alt="footer-gellary"></a>
 							</figure>
 							<figure class="figure">
-								<a href="#"><img src="assets/butcher/images/gallery/05.jpg" class="img-fluid rounded" alt="footer-gellary"></a>
+								<a href="#"><img src="{{asset('assets/butcher/images/gallery/05.jpg')}}" class="img-fluid rounded" alt="footer-gellary"></a>
 							</figure>
 							<figure class="figure">
-								<a href="#"><img src="assets/butcher/images/gallery/06.jpg" class="img-fluid rounded" alt="footer-gellary"></a>
+								<a href="#"><img src="{{asset('assets/butcher/images/gallery/06.jpg')}}" class="img-fluid rounded" alt="footer-gellary"></a>
 							</figure>
 							<figure class="figure">
-								<a href="#"><img src="assets/butcher/images/gallery/07.jpg" class="img-fluid rounded" alt="footer-gellary"></a>
+								<a href="#"><img src="{{asset('assets/butcher/images/gallery/07.jpg')}}" class="img-fluid rounded" alt="footer-gellary"></a>
 							</figure>
 							<figure class="figure">
-								<a href="#"><img src="assets/butcher/images/gallery/08.jpg" class="img-fluid rounded" alt="footer-gellary"></a>
+								<a href="#"><img src="{{asset('assets/butcher/images/gallery/08.jpg')}}" class="img-fluid rounded" alt="footer-gellary"></a>
 							</figure>
 							<figure class="figure">
-								<a href="#"><img src="assets/butcher/images/gallery/09.jpg" class="img-fluid rounded" alt="footer-gellary"></a>
+								<a href="#"><img src="{{asset('assets/butcher/images/gallery/09.jpg')}}" class="img-fluid rounded" alt="footer-gellary"></a>
 							</figure>
 						</div>
 					</div>

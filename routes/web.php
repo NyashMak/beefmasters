@@ -2,26 +2,30 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+//Admin Controllers
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
-Route::get('/', function () {
-    return view('shop_front.home');
-})->name('home');
+//BeefMaster Controllers
+use App\Http\Controllers\BMProductController;
+use App\Http\Controllers\BMHomeController;
+// use App\Http\Controllers\BMCartController;
+
+
+
+// Shop_Front Routing
+Route::get('/', [BMHomeController::class, 'index']
+)->name('home');
+
+
 Route::get('/about', function () {
     return view('shop_front.about');
 })->name('about');
-Route::get('/shop', function () {
-    return view('shop_front.shop-page');
-})->name('shop-page');
+
+Route::resource('shop',BMProductController::class);
+// Route::post('cart', BMCartController::class);
+
+
 Route::get('/show', function () {
     return view('shop_front.show');
 })->name('show');
@@ -31,8 +35,6 @@ Route::get('/cart', function () {
 Route::get('/contact', function () {
     return view('shop_front.contact');
 })->name('contact');
-
-
 //Checkout Routing
 Route::get('/checkout', function () {
     return view('shop_front.checkout');
@@ -44,7 +46,19 @@ Route::get('/receipt', function () {
     return view('shop_front.receipt');
 })->name('receipt');
 
+
+
 // Admin Routing
+//Must prefix the routes with Admin when creating the middleware
 Route::get('/admin', function () {
     return view('admin.dashboard');
 })->name('dashboard');
+// Categories Routing
+Route:: resource('categories', CategoryController::class);
+// Products Routing
+Route::post('products', [ProductController::class, 'delete'])->name('delete-product');
+Route::resource('products', ProductController::class);
+
+
+// BeefMasters Routing
+// Must prefix the routes with BeefMasters when creating the middleware
