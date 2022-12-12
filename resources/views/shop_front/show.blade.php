@@ -99,18 +99,22 @@
                                         <p>
                                             {{$product->description}}
                                         </p>
-                                        <form method="GET" action="{{route('cart')}}">
+                                        <form method="POST" action="{{route('add-to-cart')}}">
+                                            @csrf
                                             <input hidden type="number" name="product_id" value="{{$product->id}}">
+                                            <input hidden type="text" name="product_name" value="{{$product->name}}">
                                             <input hidden type="number" name="price" value="{{$product->price}}">
                                             <div>
-                                                <label for="weight">Weight</label>
-                                                <input class="cart-weight" type="number" name="weight" value="" placeholder="kg/s">                                  
+                                                <label for="weight">Weight /kg</label>
+                                                <input class="cart-weight" type="number" name="weight" value="1" placeholder="kg/s">                                  
                                             </div>
-                                            
-                                            <div class="cart-plus-minus">                                                
-                                                <div class="dec qtybutton">-</div>
-                                                <input class="cart-plus-minus-box" type="number" name="quantity" value="1" >
-                                                <div class="inc qtybutton">+</div>
+                                            <div>
+                                                <label for="quantity">Quantity</label>
+                                                <div class="cart-plus-minus">                                                
+                                                    <div class="dec qtybutton">-</div>
+                                                        <input class="cart-plus-minus-box" type="number" name="quantity" value="1" >
+                                                    <div class="inc qtybutton">+</div>
+                                                </div>
                                             </div>
                     
                                             <div class="discount-code">

@@ -1,5 +1,6 @@
 @extends('shop_front.layouts.app')
-@section('body')      
+@section('body')
+            
         <!-- Page Header Section Start Here -->
         <section class="page-header bg_img padding-tb" style="background-image: url(assets/butcher/images/banner/bg-images/bm_banner_01.png);">
             <div class="overlay"></div>
@@ -11,6 +12,21 @@
         </section>
         <!-- Page Header Section Ending Here -->
 		
+            @if(Session::has('success'))
+            <div class="alert alert-success mx-auto">
+                {{Session::get('success')}}
+            </div>
+            @endif
+            @if ($errors->any())
+            <div class="alert alert-danger mx-auto">
+                <ul>
+               @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                 @endforeach
+               </ul>
+            </div>
+            @endif
+
         <!-- shop page Section Start Here -->
         <div class="shop-page padding-tb">
             <div class="container" style="background-color: white;">
@@ -24,6 +40,9 @@
                                         <a class="active" data-target="grids"><i class="icofont-ghost"></i></a>
                                         <a data-target="lists"><i class="icofont-listing-box"></i></a>
                                     </div>
+                                </div>
+                                <div>
+                                    <p style="text-align: right">Cart({{\Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</p>
                                 </div>
 
                                 <div class="shop-product-wrap grids row justify-content-center">
@@ -40,7 +59,11 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <h6><a href="#">{{$product->name}}</a></h6>
+                                                <h6><a href="#">{{$product->name}}</a>
+                                                    @if($cart->where('id', $product->id)->count())
+                                                    <span class="badge badge-warning">In Cart</span>
+                                                    @endif
+                                                </h6>
                                                 <h6>R{{$product->price}}</h6>
                                             </div>
                                         </div>
@@ -54,7 +77,11 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <h6><a href="{{route('shop.show', $product->id)}}">{{$product->name}}</a></h6>
+                                                <h6><a href="{{route('shop.show', $product->id)}}">{{$product->name}}
+                                                </a>
+                                                    @if($cart->where('id', $product->id)->count())
+                                                    <span class="badge badge-warning">In Cart</span>
+                                                    @endif</h6>
                                                 <h6>
                                                     R{{$product->price}}
                                                 </h6>

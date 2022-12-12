@@ -9,7 +9,7 @@ use App\Http\Controllers\CategoryController;
 //BeefMaster Controllers
 use App\Http\Controllers\BMProductController;
 use App\Http\Controllers\BMHomeController;
-// use App\Http\Controllers\BMCartController;
+use App\Http\Controllers\BMCartController;
 
 
 
@@ -22,16 +22,17 @@ Route::get('/about', function () {
     return view('shop_front.about');
 })->name('about');
 
-Route::resource('shop',BMProductController::class);
-// Route::post('cart', BMCartController::class);
+Route::resource('/shop',BMProductController::class);
+Route::post('/add-to-cart', [BMCartController::class, 'add_to_cart'])->name('add-to-cart');
+Route::get('/view-cart', [BMCartController::class, 'index'])->name('view-cart');
 
 
 Route::get('/show', function () {
     return view('shop_front.show');
 })->name('show');
-Route::get('/cart', function () {
-    return view('shop_front.cart');
-})->name('cart');
+// Route::get('/cart', function () {
+//     return view('shop_front.cart');
+// })->name('cart');
 Route::get('/contact', function () {
     return view('shop_front.contact');
 })->name('contact');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Shop;
 use Illuminate\Support\Str;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class BMHomeController extends Controller
 {
@@ -25,9 +26,24 @@ class BMHomeController extends Controller
                 $farm->save();           
             }
 
-            return view('shop_front.home');
+            $cart = Cart::content();
+            if(is_object($cart)){
+                $cart = $cart->toArray();
+            } else {
+                $cart = [];
+                // $cart['id'] = 0;
+                
+            }
+            return view('shop_front.home', compact('cart'));
         }
-        
-        return view('shop_front.home');
+        $cart = Cart::content();
+        if(is_object($cart)){
+            $cart = $cart->toArray();
+        } else {
+            $cart = [];
+            // $cart['id'] = 0;
+        }
+        // dd($cart);
+        return view('shop_front.home', compact('cart'));
     }
 }

@@ -27,116 +27,32 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if ($cartArray)
+                                @foreach($cartArray as $cartItem)
                                 <tr style="background-color: white;">
                                     <td class="product-item">
                                         <div class="p-thumb">
                                             <a href="#"><img src="assets/butcher/images/product/01.jpg" alt="product"></a>
                                         </div>
                                         <div class="p-content">
-                                            <a href="#">Product Text Here</a>
+                                            <a href="#">{{$cartItem['name']}}</a>
                                         </div>
                                     </td>
-                                    <td>$250</td>
+                                    <td>{{$cartItem['price']}}</td>
                                     <td>
                                         <div class="cart-plus-minus">
                                             <div class="dec qtybutton">-</div>
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="3">
+                                            <input class="cart-plus-minus-box" type="text" name="quantity" value="{{$cartItem['qty']}}">
                                             <div class="inc qtybutton">+</div>
                                         </div>
                                     </td>
-                                    <td>$750</td>
+                                    <td>{{$cartItem['subtotal']}}</td>
                                     <td>
                                         <a href="#"><img src="assets/butcher/images/del.png" alt="product"></a>
                                     </td>
                                 </tr>
-                                <tr style="background-color: white;">
-                                    <td class="product-item">
-                                        <div class="p-thumb">
-                                            <a href="#"><img src="assets/butcher/images/product/02.jpg" alt="product"></a>
-                                        </div>
-                                        <div class="p-content">
-                                            <a href="#">Product Text Here</a>
-                                        </div>
-                                    </td>
-                                    <td>$250</td>
-                                    <td>
-                                        <div class="cart-plus-minus">
-                                            <div class="dec qtybutton">-</div>
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
-                                            <div class="inc qtybutton">+</div>
-                                        </div>
-                                    </td>
-                                    <td>$500</td>
-                                    <td>
-                                        <a href="#"><img src="assets/butcher/images/del.png" alt="product"></a>
-                                    </td>
-                                </tr>
-                                <tr style="background-color: white;">
-                                    <td class="product-item">
-                                        <div class="p-thumb">
-                                            <a href="#"><img src="assets/butcher/images/product/03.jpg" alt="product"></a>
-                                        </div>
-                                        <div class="p-content">
-                                            <a href="#">Product Text Here</a>
-                                        </div>
-                                    </td>
-                                    <td>$50</td>
-                                    <td>
-                                        <div class="cart-plus-minus">
-                                            <div class="dec qtybutton">-</div>
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
-                                            <div class="inc qtybutton">+</div>
-                                        </div>
-                                    </td>
-                                    <td>$100</td>
-                                    <td>
-                                        <a href="#"><img src="assets/butcher/images/del.png" alt="product"></a>
-                                    </td>
-                                </tr>
-                                <tr style="background-color: white;">
-                                    <td class="product-item">
-                                        <div class="p-thumb">
-                                            <a href="#"><img src="assets/butcher/images/product/04.jpg" alt="product"></a>
-                                        </div>
-                                        <div class="p-content">
-                                            <a href="#">Product Text Here</a>
-                                        </div>
-                                    </td>
-                                    <td>$100</td>
-                                    <td>
-                                        <div class="cart-plus-minus">
-                                            <div class="dec qtybutton">-</div>
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
-                                            <div class="inc qtybutton">+</div>
-                                        </div>
-                                    </td>
-                                    <td>$200</td>
-                                    <td>
-                                        <a href="#"><img src="assets/butcher/images/del.png" alt="product"></a>
-                                    </td>
-                                </tr>
-                                <tr style="background-color: white;">
-                                    <td class="product-item">
-                                        <div class="p-thumb">
-                                            <a href="#"><img src="assets/butcher/images/product/05.jpg" alt="product"></a>
-                                        </div>
-                                        <div class="p-content">
-                                            <a href="#">Product Text Here</a>
-                                        </div>
-                                    </td>
-                                    <td>$200</td>
-                                    <td>
-                                        <div class="cart-plus-minus">
-                                            <div class="dec qtybutton">-</div>
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
-                                            <div class="inc qtybutton">+</div>
-                                        </div>
-                                    </td>
-                                    <td>$400</td>
-                                    <td>
-                                        <a href="#"><img src="assets/butcher/images/del.png" alt="product"></a>
-                                    </td>
-                                </tr>
+                                @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Hamcrest\Type\IsObject;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
@@ -23,7 +24,14 @@ class BMProductController extends Controller
     {
         $categories = Category::where('shop_id', 1)->get();
         $products = Product::all();
-        return view ('shop_front.shop-page', compact('categories', 'products'));
+        $cart = Cart::content();
+        // if(is_object($cart)){
+        //     $cart = $cart->toArray();
+        // } else {
+        //     $cart = [];
+        // }
+        // dd($cart);
+        return view ('shop_front.shop-page', compact('categories', 'products', 'cart'));
     }
 
     /**
@@ -56,8 +64,9 @@ class BMProductController extends Controller
     public function show($id)
     {
         $product = Product::where('id', $id)->first();
+        $cart = Cart::content();
 
-        return view ('shop_front.show', compact('product'));
+        return view ('shop_front.show', compact('product', 'cart'));
     }
 
     /**

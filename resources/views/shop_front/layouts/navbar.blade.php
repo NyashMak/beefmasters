@@ -92,36 +92,32 @@
 											<div class="cart-option">
 												<i class="icofont-cart-alt"></i>
 												<div class="cart-content">
+													@if($cart)
+														@foreach($cart as $cartItem)													
+														<div class="cart-item">
+															<div class="cart-img">
+																<a href="#"><img src="{{asset('assets/butcher/images/shop/01.jpg')}}" alt="cart"></a>
+															</div>
+															<div class="cart-des">
+																<a href="#">{{$cartItem->name}}</a>
+																<p>R {{$cartItem->price}} <span><small style="color: brown">subtotal: R{{$cartItem->price*$cartItem->qty}}</small></span></p>
+															</div>
+															<div class="cart-btn">
+																<a href="#"><i class="icofont-close-circled"></i></a>
+															</div>
+														</div>
+														@endforeach
+													@else
 													<div class="cart-item">
-														<div class="cart-img">
-															<a href="#"><img src="{{asset('assets/butcher/images/shop/01.jpg')}}" alt="cart"></a>
-														</div>
-														<div class="cart-des">
-															<a href="#">Product Title Hore</a>
-															<p>$20.00</p>
-														</div>
-														<div class="cart-btn">
-															<a href="#"><i class="icofont-close-circled"></i></a>
-														</div>
+														<p>Cart Empty</p>
 													</div>
-													<div class="cart-item">
-														<div class="cart-img">
-															<a href="#"><img src="{{asset('assets/butcher/images/shop/02.jpg')}}" alt="cart"></a>
-														</div>
-														<div class="cart-des">
-															<a href="#">Product Title Hore</a>
-															<p>$20.00</p>
-														</div>
-														<div class="cart-btn">
-															<a href="#"><i class="icofont-close-circled"></i></a>
-														</div>
-													</div>
+													@endif
 													<div class="cart-bottom">
 														<div class="cart-subtotal">
 															<p>Total: <b class="float-right">$40.00</b></p>
 														</div>
 														<div class="cart-action">
-															<a href="#" class="lab-btn"><span>View Cart</span></a>
+															<a href="{{route('view-cart')}}" class="lab-btn"><span>View Cart</span></a>
 															<a href="#" class="lab-btn"><span>Check Out</span></a>
 														</div>
 													</div>
