@@ -25,13 +25,20 @@ class BMProductController extends Controller
         $categories = Category::where('shop_id', 1)->get();
         $products = Product::all();
         $cart = Cart::content();
+        $decimals = 2;
+        $decimalSeparator = ".";
+        $thousandSeparator = " ";
+        $priceTotalBeforeDiscountTax = Cart::priceTotal($decimals, $decimalSeparator, $thousandSeparator);
+        $subtotal = Cart::subtotal($decimals, $decimalSeparator, $thousandSeparator);
+        $tax = Cart::tax($decimals, $decimalSeparator, $thousandSeparator);
+        $total = Cart::total($decimals, $decimalSeparator, $thousandSeparator);
         // if(is_object($cart)){
         //     $cart = $cart->toArray();
         // } else {
         //     $cart = [];
         // }
         // dd($cart);
-        return view ('shop_front.shop-page', compact('categories', 'products', 'cart'));
+        return view ('shop_front.shop-page', compact('categories', 'products', 'cart', 'subtotal'));
     }
 
     /**
@@ -65,8 +72,15 @@ class BMProductController extends Controller
     {
         $product = Product::where('id', $id)->first();
         $cart = Cart::content();
+        $decimals = 2;
+        $decimalSeparator = ".";
+        $thousandSeparator = " ";
+        $priceTotalBeforeDiscountTax = Cart::priceTotal($decimals, $decimalSeparator, $thousandSeparator);
+        $subtotal = Cart::subtotal($decimals, $decimalSeparator, $thousandSeparator);
+        $tax = Cart::tax($decimals, $decimalSeparator, $thousandSeparator);
+        $total = Cart::total($decimals, $decimalSeparator, $thousandSeparator);
 
-        return view ('shop_front.show', compact('product', 'cart'));
+        return view ('shop_front.show', compact('product', 'cart', 'subtotal', 'tax', 'total'));
     }
 
     /**

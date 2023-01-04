@@ -35,7 +35,40 @@ class BMCartController extends Controller
 
         $cart = Cart::content();
         $cartArray = $cart->toArray();
-        dd($cart->toArray());
-        return view('shop_front.cart', compact('cart', 'cartArray'));
+        $decimals = 2;
+        $decimalSeparator = ".";
+        $thousandSeparator = " ";
+        $priceTotalBeforeDiscountTax = Cart::priceTotal($decimals, $decimalSeparator, $thousandSeparator);
+        $subtotal = Cart::subtotal($decimals, $decimalSeparator, $thousandSeparator);
+        $tax = Cart::tax($decimals, $decimalSeparator, $thousandSeparator);
+        $total = Cart::total($decimals, $decimalSeparator, $thousandSeparator);
+        // dd($priceTotalBeforeDiscountTax);
+        // dd($cart->toArray());
+        return view('shop_front.cart', compact('cart', 'cartArray', 'priceTotalBeforeDiscountTax', 'subtotal', 'tax', 'total'));
+    }
+
+    public function update(Request $request){
+        foreach ($request->quantity as $cartItemID => $quantity){
+            // dd($cartItemID);
+            Cart::updateOrCreate($cartItemID, $quantity);
+        }
+
+        $cart = Cart::content();
+        $cartArray = $cart->toArray();
+        $decimals = 2;
+        $decimalSeparator = ".";
+        $thousandSeparator = " ";
+        $priceTotalBeforeDiscountTax = Cart::priceTotal($decimals, $decimalSeparator, $thousandSeparator);
+        $subtotal = Cart::subtotal($decimals, $decimalSeparator, $thousandSeparator);
+        $tax = Cart::tax($decimals, $decimalSeparator, $thousandSeparator);
+        $total = Cart::total($decimals, $decimalSeparator, $thousandSeparator);
+        // dd($priceTotalBeforeDiscountTax);
+        // dd($cart->toArray());
+        return view('shop_front.cart', compact('cart', 'cartArray', 'priceTotalBeforeDiscountTax', 'subtotal', 'tax', 'total'));
+
+    }
+
+    public function checkout(){
+        
     }
 }

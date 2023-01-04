@@ -11,6 +11,7 @@ class BMHomeController extends Controller
 {
     public function index (){
         $shops = Shop::all();
+        
         if (count($shops)!= 2){
             if (Shop::where('name','Butcher')->first() == ""){       
                 $butcher = new Shop;
@@ -27,23 +28,47 @@ class BMHomeController extends Controller
             }
 
             $cart = Cart::content();
-            if(is_object($cart)){
-                $cart = $cart->toArray();
-            } else {
-                $cart = [];
-                // $cart['id'] = 0;
+            Cart::setGlobalTax(15);
+            $decimals = 2;
+            $decimalSeparator = ".";
+            $thousandSeparator = " ";
+            $priceTotalBeforeDiscountTax = Cart::priceTotal($decimals, $decimalSeparator, $thousandSeparator);
+            $subtotal = Cart::subtotal($decimals, $decimalSeparator, $thousandSeparator);
+            $tax = Cart::tax($decimals, $decimalSeparator, $thousandSeparator);
+            $total = Cart::total($decimals, $decimalSeparator, $thousandSeparator);
+            // if(is_object($cart)){
+            //     $cart = $cart->toArray();
+            // } else {
+            //     $cart = [];
+            //     // $cart['id'] = 0;
                 
-            }
+            // }
+
+            // dd('HERE');
             return view('shop_front.home', compact('cart'));
         }
         $cart = Cart::content();
         if(is_object($cart)){
-            $cart = $cart->toArray();
+            // $cart = $cart->toArray();
+            Cart::setGlobalTax(15);
+            $decimals = 2;
+            $decimalSeparator = ".";
+            $thousandSeparator = " ";
+            $priceTotalBeforeDiscountTax = Cart::priceTotal($decimals, $decimalSeparator, $thousandSeparator);
+            $subtotal = Cart::subtotal($decimals, $decimalSeparator, $thousandSeparator);
+            $tax = Cart::tax($decimals, $decimalSeparator, $thousandSeparator);
+            $total = Cart::total($decimals, $decimalSeparator, $thousandSeparator);
+            // dd($subtotal);
         } else {
-            $cart = [];
+            dd('No Cart');
+            // $cart = [];
             // $cart['id'] = 0;
+            $cart = new Cart();
+            $subtotal = 0;
+            dd($subtotal);
         }
+        // dd($subtotal);
         // dd($cart);
-        return view('shop_front.home', compact('cart'));
+        return view('shop_front.home', compact('cart', 'subtotal'));
     }
 }

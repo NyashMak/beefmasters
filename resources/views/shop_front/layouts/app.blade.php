@@ -39,6 +39,10 @@
     <link rel="stylesheet" media="all" href="{{asset('assets/butcher/css/ion-range-slider.css')}}" />
     <link rel="stylesheet" media="all" href="{{asset('assets/butcher/css/theme.css')}}" />
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+	@livewireStyles
+
 	</head>
 
 	<body>
@@ -76,5 +80,11 @@
 		<script src="{{asset('assets/butcher/js/jquery.ion.rangeSlider.js')}}"></script>
 		<script src="{{asset('assets/butcher/js/jquery.isotope.pkgd.js')}}"></script>
 		<script src="{{asset('assets/butcher/js/main.js')}}"></script>
+
+		<script type="text/javascript">
+			
+		</script>
+
+		@livewireScripts
 	</body>
 </html>

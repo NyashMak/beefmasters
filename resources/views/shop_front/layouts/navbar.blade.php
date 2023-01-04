@@ -112,11 +112,15 @@
 														<p>Cart Empty</p>
 													</div>
 													@endif
-													<div class="cart-bottom">
-														<div class="cart-subtotal">
-															<p>Total: <b class="float-right">$40.00</b></p>
+													<div class="cart-bottom">														
+														<div class="cartsubtotal">
+															@if($subtotal != "")
+															<p>Total: <b class="float-right">R {{$subtotal}}</b></p>
+															@else
+															<p>Total: <b class="float-right">R 0.00</b></p>
+															@endif
+															<div class="cart-action">
 														</div>
-														<div class="cart-action">
 															<a href="{{route('view-cart')}}" class="lab-btn"><span>View Cart</span></a>
 															<a href="#" class="lab-btn"><span>Check Out</span></a>
 														</div>
