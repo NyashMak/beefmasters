@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Discount;
 use Illuminate\Http\Request;
+use Hamcrest\Type\IsObject;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Http;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class DiscountController extends Controller
 {
@@ -14,7 +18,9 @@ class DiscountController extends Controller
      */
     public function index()
     {
-        //
+        $discounts = Discount::all();
+
+        return view('admin.discounts.index', compact('discounts'));
     }
 
     /**
@@ -24,7 +30,7 @@ class DiscountController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.discounts.create');
     }
 
     /**
@@ -35,7 +41,21 @@ class DiscountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->request->add(['sid'=>Str::uuid()->toString()]);
+        request()->request->add(['amount'=>0]);
+        request()->request->add(['discount_percent'=>$request->discount_percent]);
+        $sid = $request->sid;
+        $name = $request->name;
+        $input = $request->all();
+        Discount::create($input);
+
+        // dd('Check if created');
+        if(!is_object(Discount::where('sid', $sid)->first())){
+            dd('failed');
+            return view('admin.discounts.index');  
+        } else {
+            return redirect()->route('discounts.index')->with('success', $name.' category created successfully');
+        }
     }
 
     /**

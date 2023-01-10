@@ -1,7 +1,22 @@
 ﻿@extends('shop_front.layouts.app')
 @section('body')
+@if(Session::has('success'))
+<div class="alert alert-success mx-auto">
+    {{Session::get('success')}}
+</div>
+@endif
+@if ($errors->any())
+<div class="alert alert-danger mx-auto">
+    <ul>
+   @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+     @endforeach
+   </ul>
+</div>
+@endif
+<?php
 
-
+ ?>
         <!-- ========================  Main header ======================== -->
 
         <section class="main-header" style="background-image:url(assets/butcher/images/gallery-2.jpg)">
@@ -95,35 +110,55 @@
                                         <!--signup-->
 
                                         <div class="login-block login-block-signup">
+                                            <div>
+                                                <p style="color: red">If you already have an account click the "Log in" button</p>
+                                            </div>
 
                                             <div class="h4">Register now <a href="javascript:void(0);" class="btn lab-btn btn-xs btn-login pull-right">Log in</a></div>
 
                                             <hr />
 
+                                            <input hidden type="number" name="is_customer" value="1">
                                             <div class="row">
-
+                                                <form action="{{route('register_user')}}" method="POST">
+                                                @csrf
+                                                <input hidden type="number" name="is_customer" value="1">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="text" value="" class="form-control" placeholder="First name: *">
+                                                        <input required name="first_name" type="text" value="" class="form-control" placeholder="First name: *">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="text" value="" class="form-control" placeholder="Last name: *">
+                                                        <input required name="last_name" type="text" value="" class="form-control" placeholder="Last name: *">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-12">
 
                                                     <div class="form-group">
-                                                        <input type="text" value="" class="form-control" placeholder="Company name:">
+                                                        <input required name="password" type="text" value="" class="form-control" placeholder="Password: *"><span style="color: red"><small> Please save this password somewhere!</small></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+
+                                                    <div class="form-group">
+                                                        <input name="street_address" type="text" value="" class="form-control" placeholder="Street Address: *">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+
+                                                    <div class="form-group">
+                                                        <input name="suburb" type="text" value="" class="form-control" placeholder="Suburb: *">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <input type="text" value="" class="form-control" placeholder="Zip code: *">
+                                                        <input name="zip_code" type="text" value="" class="form-control" placeholder="Zip code: *">
                                                     </div>
                                                 </div>
 
@@ -135,7 +170,7 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="text" value="" class="form-control" placeholder="Email: *">
+                                                        <input required type="email" name="email" value="" class="form-control" placeholder="Email: *">
                                                     </div>
                                                 </div>
 
@@ -146,22 +181,9 @@
                                                 </div>
 
                                                 <div class="col-md-12">
-                                                    <hr />
-                                                    <span class="checkbox">
-                                                        <input type="checkbox" id="checkBoxId1">
-                                                        <label for="checkBoxId1">I have read and accepted the <a href="#">terms</a>, as well as read and understood our terms of <a href="#">business contidions</a></label>
-                                                    </span>
-                                                    <span class="checkbox">
-                                                        <input type="checkbox" id="checkBoxId2">
-                                                        <label for="checkBoxId2">Subscribe to exciting newsletters and great tips</label>
-                                                    </span>
-                                                    <hr />
+                                                    <button type="submit" class="btn lab-btn btn-block">Create account</button>
                                                 </div>
-
-                                                <div class="col-md-12">
-                                                    <a href="#" class="btn lab-btn btn-block">Create account</a>
-                                                </div>
-
+                                                </form>
                                             </div>
                                         </div> <!--/signup-->
                                     </div>
@@ -237,24 +259,28 @@
 
                     <!--cart items-->
 
+                    @if($cart)
+                    @foreach($cart as $cartItem)
                     <div class="clearfix">
                         <div class="cart-block cart-block-item clearfix">
                             <div class="image">
-                                <a href="product.html"><img src="assets/butcher/images/product-3.png" alt="" /></a>
+                                <a href="product.html"><img src="{{asset('assets/butcher/images/product-3.png')}}" alt="" /></a>
                             </div>
                             <div class="title">
-                                <div class="h4"><a href="product.html">Green corner</a></div>
-                                <div>Green corner</div>
+                                <div class="h4"><a href="product.html">{{$cartItem->name}}</a></div>
+                                <div>{{$cartItem->name}}</div>
                             </div>
                             <div class="quantity">
-                                <strong>1</strong>
+                                <strong>{{$cartItem->qty}}</strong>
                             </div>
                             <div class="price">
-                                <span class="final h3">$ 1.998</span>
-                                <span class="discount">$ 2.666</span>
+                                <span class="final h3">{{$cartItem->subtotal}} <span><small>// Include discount</small></span></span>
+                                <span class="discount">{{$cartItem->subtotal}} // Price before discount</span>
                             </div>
                         </div>
                     </div>
+                    @endforeach
+                    @endif
 
                     <!--cart prices -->
 
@@ -264,7 +290,11 @@
                                 <strong>Discount 15%</strong>
                             </div>
                             <div>
-                                <span>$ 159,00</span>
+                                @if($discount)
+                                <span>R {{$discount}}</span>
+                                @else
+                                <span>R 0.00</span>
+                                @endif
                             </div>
                         </div>
 
@@ -273,7 +303,11 @@
                                 <strong>Shipping</strong>
                             </div>
                             <div>
-                                <span>$ 30,00</span>
+                                @if($shipping)
+                                <span>{{$shipping}}</span>
+                                @else
+                                <span>R 0,00</span>
+                                @endif
                             </div>
                         </div>
 
@@ -282,7 +316,7 @@
                                 <strong>VAT</strong>
                             </div>
                             <div>
-                                <span>$ 59,00</span>
+                                <span>R {{$tax}}</span>
                             </div>
                         </div>
                     </div>
@@ -295,7 +329,8 @@
                                 <strong>Promo code included!</strong>
                             </div>
                             <div>
-                                <div class="h2 title">$ 1259,00</div>
+                                {{-- <div class="h2 title">R {{$subtotal}}</div> --}}
+                                <div class="h2 title">R {{$total}}</div>
                             </div>
                         </div>
                     </div>
@@ -309,9 +344,48 @@
                         <div class="col-xs-6">
                             <a href="checkout-1.html" class="btn btn-clean-dark"><span class="icon icon-chevron-left"></span> Back to cart</a>
                         </div>
-                        <div class="col-xs-6 text-right">
-                            <a href="{{route('payment')}}" class="btn lab-btn"><span class="icon icon-cart"></span> Go to payment</a>
-                        </div>
+    
+    {{-- Payfast Form --}}
+    <div class="col-xs-6 text-right">
+        <form action="https://sandbox.payfast.co.za/eng/process" method="POST">
+            @csrf
+
+            {{-- Merchant Details --}}
+            <input type="hidden" name="merchant_id" value="10028272">
+            <input type="hidden" name="merchant_key" value="abonw8bat2nsd">
+            <input type="hidden" name="return_url" value="https://www.example.com/success">
+            <input type="hidden" name="cancel_url" value="https://www.example.com/cancel">
+            <input type="hidden" name="notify_url" value="https://www.example.com/notify">
+
+            {{-- Customer Details --}}
+            <input type="hidden" name="name_first" value="Nyasha">
+            <input type="hidden" name="name_last" value="Mak">
+            <input type="hidden" name="email_address" value="lmakwavarara@rocketmail.com">
+            <input type="hidden" name="cell_number" value="0823456789"> 
+
+            {{-- Transaction Details --}}
+            <input type="hidden" name="m_payment_id" value="01AB">
+            <input type="hidden" name="amount" value="100.00">
+            <input type="hidden" name="item_name" value="Test Item">
+            <input type="hidden" name="item_description" value="A test product">
+            <input type="hidden" name="custom_int1" value="2">
+            <input type="hidden" name="custom_str1" value="Extra order information">
+
+            {{-- Transaction Options --}}
+            <input type="hidden" name="email_confirmation" value="1">
+            {{-- <input type="hidden" name="confirmation_address" value="lmakwavarara@rocketmail.com">  --}}
+
+            {{-- Payment Option --}}
+            <input type="hidden" name="payment_method" value="cc">
+
+            {{-- Security Signature --}}
+            <input type="hidden" name="signature" value=""> 
+            
+    
+            <button type="submit" class="btn lab-btn"><span class="icon icon-cart"></span> Go to payment</button>
+        </form>
+    </div>
+    {{-- End of Payfast Form --}}
                     </div>
                 </div>
 

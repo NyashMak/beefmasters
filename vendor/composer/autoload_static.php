@@ -107,6 +107,7 @@ class ComposerStaticInit2996a3d2ae8cf0dd0d6a83d08cc4e863
         'N' => 
         array (
             'NunoMaduro\\Collision\\' => 21,
+            'NextApps\\UniqueCodes\\' => 21,
         ),
         'M' => 
         array (
@@ -370,6 +371,10 @@ class ComposerStaticInit2996a3d2ae8cf0dd0d6a83d08cc4e863
         array (
             0 => __DIR__ . '/..' . '/nunomaduro/collision/src',
         ),
+        'NextApps\\UniqueCodes\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nextapps/unique-codes/src',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -537,7 +542,10 @@ class ComposerStaticInit2996a3d2ae8cf0dd0d6a83d08cc4e863
         'App\\Http\\Controllers\\UserAddressController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserAddressController.php',
         'App\\Http\\Controllers\\UserPaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserPaymentController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Livewire\\CartBottom' => __DIR__ . '/../..' . '/app/Http/Livewire/CartBottom.php',
+        'App\\Http\\Livewire\\ProductsTable' => __DIR__ . '/../..' . '/app/Http/Livewire/ProductsTable.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
+        'App\\Http\\Middleware\\CheckUser' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckUser.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
@@ -3467,6 +3475,7 @@ class ComposerStaticInit2996a3d2ae8cf0dd0d6a83d08cc4e863
         'Nette\\Utils\\Type' => __DIR__ . '/..' . '/nette/utils/src/Utils/Type.php',
         'Nette\\Utils\\UnknownImageFileException' => __DIR__ . '/..' . '/nette/utils/src/Utils/exceptions.php',
         'Nette\\Utils\\Validators' => __DIR__ . '/..' . '/nette/utils/src/Utils/Validators.php',
+        'NextApps\\UniqueCodes\\UniqueCodes' => __DIR__ . '/..' . '/nextapps/unique-codes/src/UniqueCodes.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Laravel/CollisionServiceProvider.php',
         'NunoMaduro\\Collision\\Adapters\\Laravel\\Commands\\TestCommand' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Laravel/Commands/TestCommand.php',

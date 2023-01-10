@@ -69,6 +69,48 @@ class BMCartController extends Controller
     }
 
     public function checkout(){
+        $cart = Cart::content();
+        $cartArray = $cart->toArray();
+        $decimals = 2;
+        $decimalSeparator = ".";
+        $thousandSeparator = " ";
+        $priceTotalBeforeDiscountTax = Cart::priceTotal($decimals, $decimalSeparator, $thousandSeparator);
+        $subtotal = Cart::subtotal($decimals, $decimalSeparator, $thousandSeparator);
+        $tax = Cart::tax($decimals, $decimalSeparator, $thousandSeparator);
+        $discount = Cart::discount();
+        $total = Cart::total($decimals, $decimalSeparator, $thousandSeparator);
+
+        // Get shipping cost from cart page via POST
+        $shipping = 0;
+        // dd($cartArray);
+        $data = array();
+        $passPhrase = 'beefmasterstest';
+        // function generateSignature($data, $passPhrase = null) {
+        //     // Create parameter string
+        //     $pfOutput = '';
+        //     foreach( $data as $key => $val ) {
+        //         if($val !== '') {
+        //             $pfOutput .= $key .'='. urlencode( trim( $val ) ) .'&';
+        //         }
+        //     }
+        //     // Remove last ampersand
+        //     $getString = substr( $pfOutput, 0, -1 );
+        //     if( $passPhrase !== null ) {
+        //         $getString .= '&passphrase='. urlencode( trim( $passPhrase ) );
+        //     }
+        //     return md5( $getString );
+        // }
+
+        // $data['name_first'] = 'Nyasha';
+        // $data['name_last'] = 'Makwa';
+        // $data['email_address'] = 'lmakwavarara@rocketmail.com';
+        // $data['cell_number'] = '0823456789';
         
+        
+
+        // $signature = generateSignature( $data, $passPhrase );
+        // dd($signature);
+
+        return view('shop_front.checkout', compact('cart', 'cartArray', 'priceTotalBeforeDiscountTax', 'subtotal', 'tax', 'total', 'discount', 'shipping'));
     }
 }

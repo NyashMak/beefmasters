@@ -1,0 +1,55 @@
+{
+    "name": "nextapps/unique-codes",
+    "description": "Generate unique, random-looking codes",
+    "keywords": [
+        "nextapps",
+        "unique-codes",
+        "vouchers",
+        "coupons"
+    ],
+    "homepage": "https://github.com/nextapps-be/unique-codes",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Günther Debrauwer",
+            "email": "gunther@nextapps.be",
+            "homepage": "https://nextapps.be",
+            "role": "Developer"
+        },
+        {
+            "name": "Evert Arnould",
+            "email": "evert@nextapps.be",
+            "homepage": "https://nextapps.be",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.3|^7.4|^8.0|^8.1"
+    },
+    "require-dev": {
+        "adamwojs/php-cs-fixer-phpdoc-force-fqcn": "^2.0",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "phpunit/phpunit": "^9.0",
+        "squizlabs/php_codesniffer": "^3.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "NextApps\\UniqueCodes\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "NextApps\\UniqueCodes\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "lint": "vendor/bin/php-cs-fixer fix && vendor/bin/phpcs --colors --report-full",
+        "lint-dry": "vendor/bin/php-cs-fixer fix --dry-run && vendor/bin/phpcs --colors --report-full"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

@@ -80,7 +80,7 @@
 					</a>
 				  </li>
 				  <li class="nav-main-item">
-					<a class="nav-main-link" href="">
+					<a class="nav-main-link" href="{{route('discounts.index')}}">
 					  <span class="nav-main-link-name">Discounts</span>
 					</a>
 				  </li>

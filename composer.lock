@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4964fcbec2dfcb3f72b8d67f9a19d561",
+    "content-hash": "e798719e5ace8d8468c570f7b6362b49",
     "packages": [
         {
             "name": "brick/math",
@@ -2105,6 +2105,67 @@
                 "source": "https://github.com/nette/utils/tree/v3.2.8"
             },
             "time": "2022-09-12T23:36:20+00:00"
+        },
+        {
+            "name": "nextapps/unique-codes",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nextapps-be/unique-codes.git",
+                "reference": "71c6c3b517075d079639e2ad76f5db19be010743"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nextapps-be/unique-codes/zipball/71c6c3b517075d079639e2ad76f5db19be010743",
+                "reference": "71c6c3b517075d079639e2ad76f5db19be010743",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^7.4|^8.0|^8.1"
+            },
+            "require-dev": {
+                "adamwojs/php-cs-fixer-phpdoc-force-fqcn": "^2.0",
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "phpunit/phpunit": "^9.0",
+                "squizlabs/php_codesniffer": "^3.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NextApps\\UniqueCodes\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Günther Debrauwer",
+                    "email": "gunther@nextapps.be",
+                    "homepage": "https://nextapps.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Evert Arnould",
+                    "email": "evert@nextapps.be",
+                    "homepage": "https://nextapps.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Generate unique, random-looking codes",
+            "homepage": "https://github.com/nextapps-be/unique-codes",
+            "keywords": [
+                "coupons",
+                "nextapps",
+                "unique-codes",
+                "vouchers"
+            ],
+            "support": {
+                "issues": "https://github.com/nextapps-be/unique-codes/issues",
+                "source": "https://github.com/nextapps-be/unique-codes/tree/2.1.0"
+            },
+            "time": "2022-02-24T10:55:22+00:00"
         },
         {
             "name": "nikic/php-parser",
