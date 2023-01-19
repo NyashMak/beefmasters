@@ -41,7 +41,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	
-	<script defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&region=za&libraries=places"></script>
+	<script defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE&region=za&libraries=places"></script>
 
 	@livewireStyles
 
@@ -94,7 +94,7 @@
 					var from_place = from_places.getPlace();
 					var from_address = from_place.formatted_address;
 					$('#origin').val(from_address);
-					window.origin = from_address
+					window.origin = from_address;
 				});
 	
 			
@@ -104,6 +104,7 @@
 					var to_place = to_places.getPlace();
 					var to_address = to_place.formatted_address;
 					$('#destination').val(to_address);
+					$('#set_address').val(to_address);
 					window.destination = to_address;
 				});
 	
@@ -211,7 +212,9 @@
 
 				var subtotal = document.getElementById('subtotal');
 				var subtotalText = subtotal.textContent;
-				console.log(subtotalText);
+				var cleanAddress = document.getElementById('set_address');
+				var set_address = cleanAddress.value;
+				console.log(set_address);
 				if (distance_in_kilo > 10 && distance_in_kilo < 25 && subtotalText > 300){
 					var delivery = document.getElementById('delivery');
 					var show_delivery = document.getElementById('show_delivery');

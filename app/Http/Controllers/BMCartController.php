@@ -53,7 +53,13 @@ class BMCartController extends Controller
         //     Cart::updateOrCreate($cartItemID, $quantity);
         // }
 
-        dd($request);
+        // dd($request);
+        $deliveryFee = $request->delivery;
+        $deliveryAddress = $request->set_address;
+        if ($deliveryAddress == null){
+            $deliveryAddress = 'Collect in-store';
+        }
+
         $cart = Cart::content();
         $cartArray = $cart->toArray();
         $decimals = 2;
@@ -65,11 +71,25 @@ class BMCartController extends Controller
         $total = Cart::total($decimals, $decimalSeparator, $thousandSeparator);
         // dd($priceTotalBeforeDiscountTax);
         // dd($cart->toArray());
+        if ($deliveryFee == 'Free Delivery'){
+            $total = $total + 0;
+            return view('shop_front.cart', compact('cart', 'cartArray', 'priceTotalBeforeDiscountTax', 'subtotal', 'tax', 'total', 'deliveryFee', 'deliveryAddress' ));
+        }
+        if ($deliveryFee == 'Collect in-store'){
+            $total = $total + 0;
+            return view('shop_front.cart', compact('cart', 'cartArray', 'priceTotalBeforeDiscountTax', 'subtotal', 'tax', 'total', 'deliveryFee', 'deliveryAddress'));
+        }
+        if ($deliveryFee != 'Collect in-store' && $deliveryFee != 'Free Delivery'){
+            $deliveryFee = $deliveryFee+0;
+            $total = $total + $deliveryFee;
+            return view('shop_front.cart', compact('cart', 'cartArray', 'priceTotalBeforeDiscountTax', 'subtotal', 'tax', 'total', 'deliveryFee', 'deliveryAddress'));
+        }
         return view('shop_front.cart', compact('cart', 'cartArray', 'priceTotalBeforeDiscountTax', 'subtotal', 'tax', 'total'));
 
     }
 
-    public function checkout(){
+    public function checkout(Request $request){
+        dd($request);
         $cart = Cart::content();
         $cartArray = $cart->toArray();
         $decimals = 2;

@@ -30,15 +30,20 @@
                                                     <br>
                                             </div> <br>
                                             <div class="outline-select">
-                                                <label>Enter destination to see if you qaulify for free delivery</label>
-                                                <input class="form-control" id="to_places" placeholder="Enter Destination"/>
-                                                <input id="destination" name="destination" required="" type="hidden"/><br>
-                                                <button onclick="getCurrentPosition()">Set Current Location</button>
+                                                <label style="color: red">Enter destination to calculate delivery fee!</label>
+                                                @if($deliveryAddress)
+                                                    <input class="form-control" id="to_places" value="{{$deliveryAddress}}"/>
+                                                    <input id="destination" name="destination" type="hidden" value="{{$deliveryAddress}}"/><br>
+                                                @else
+                                                    <input class="form-control" id="to_places" placeholder="Enter Destination"/>
+                                                    <input id="destination" name="destination" type="hidden"/><br>
+                                                    <button onclick="getCurrentPosition()">Set Current Location</button>
+                                                @endif
                                             </div><br>
                                             <div>
                                             <input type="hidden" class="form-control" id="travel_mode" name="travel_mode" value="DRIVING"/>
                                             </div>
-                                            <input value="Find" type="submit" class="lab-btn" style="border: none; border-radius: 5px; color: white;"/>
+                                            <input value="Calculate Delivery" type="submit" class="lab-btn" style="border: none; border-radius: 5px; color: white;"/>
                                         </form>
                                     </div>
                                     <div class="row" style="padding-top: 20px;">
@@ -61,11 +66,16 @@
                                                 <li>
                                                     <span class="pull-left">Delivery</span>
                                                     <input type="hidden" id="delivery" name="delivery" style="border: none" class="pull-right"/>
+                                                    <input type="hidden" id="set_address" name="set_address">
                                                     @isset($_GET['delivery']){
                                                         <input id="show_delivery" name="show_delivery" style="border: none"  class="pull-right"/>
                                                     }
                                                     @else
-                                                        <input id="show_delivery" name="show_delivery" style="border: none" value="Enter Destination First" class="pull-right"/>
+                                                        @if($deliveryFee)
+                                                            <input id="show_delivery" name="show_delivery" style="border: none" value="{{$deliveryFee}}" class="pull-right"/>
+                                                        @else
+                                                            <input id="show_delivery" name="show_delivery" style="border: none" value="Enter Destination First" class="pull-right"/>
+                                                        @endif
                                                     
                                                     @endif
                                                 </li>
@@ -87,7 +97,11 @@
                                 @csrf
                                 <input type="submit" value="Update Cart">
                             </form>
-                            <form method="GET" action="{{route('checkout')}}" class="cart-checkout">
+                            <form method="POST" action="{{route('checkout')}}" class="cart-checkout">
+                                @csrf
+                                <input hidden type="number" name="delivery_fee" value="{{$deliveryFee}}">
+                                <input hidden type="text" name="delivery_address" value="{{$deliveryAddress}}">
+                                <input hidden type="number" name="total" value="{{$total}}">
                                 <input type="submit" value="Proceed to Checkout">
                             </form>
                         </div>

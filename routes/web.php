@@ -35,7 +35,7 @@ Route::resource('/shop',BMProductController::class);
 Route::post('/add-to-cart', [BMCartController::class, 'add_to_cart'])->name('add-to-cart');
 Route::get('/view-cart', [BMCartController::class, 'index'])->name('view-cart');
 Route::post('/update-cart', [BMCartController::class, 'update'])->name('update-cart');
-Route::get('/checkout', [BMCartController::class, 'checkout'])->name('checkout');
+Route::post('/checkout', [BMCartController::class, 'checkout'])->name('checkout');
 
 
 
