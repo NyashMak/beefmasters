@@ -41,7 +41,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	
-	<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk18ntE5m8McOYbklSVDCuMwkI8crJHKU&region=za&libraries=places"></script>
+	<script defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&region=za&libraries=places"></script>
 
 	@livewireStyles
 
