@@ -48,11 +48,12 @@ class BMCartController extends Controller
     }
 
     public function update(Request $request){
-        foreach ($request->quantity as $cartItemID => $quantity){
-            // dd($cartItemID);
-            Cart::updateOrCreate($cartItemID, $quantity);
-        }
+        // foreach ($request->quantity as $cartItemID => $quantity){
+        //     // dd($cartItemID);
+        //     Cart::updateOrCreate($cartItemID, $quantity);
+        // }
 
+        dd($request);
         $cart = Cart::content();
         $cartArray = $cart->toArray();
         $decimals = 2;

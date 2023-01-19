@@ -120,9 +120,10 @@
 
                                             <input hidden type="number" name="is_customer" value="1">
                                             <div class="row">
-                                                <form action="{{route('register_user')}}" method="POST">
-                                                @csrf
-                                                <input hidden type="number" name="is_customer" value="1">
+                                                {{-- <form action="{{route('register_user')}}" method="POST">
+                                                @csrf --}}
+                                                <form id="distance_form">
+                                                {{-- <input hidden type="number" name="is_customer" value="1">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input required name="first_name" type="text" value="" class="form-control" placeholder="First name: *">
@@ -140,10 +141,25 @@
                                                     <div class="form-group">
                                                         <input required name="password" type="text" value="" class="form-control" placeholder="Password: *"><span style="color: red"><small> Please save this password somewhere!</small></span>
                                                     </div>
+                                                </div> --}}
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label >Origin</label>
+                                                        <input id="from_places" name="from_places" value="" class="form-control" placeholder="Enter a Location: *">
+                                                        <input id="origin" type="hidden" name="origin">
+                                                    </div>
                                                 </div>
 
                                                 <div class="col-md-12">
-
+                                                    <div class="form-group">
+                                                        <label >Destination</label>
+                                                        <input id="to_places" name="to_places" value="" class="form-control" placeholder="Enter a Location: *">
+                                                        <input id="destination" type="hidden" name="destination">
+                                                    </div>
+                                                </div>
+{{-- 
+                                                <div class="col-md-12">
                                                     <div class="form-group">
                                                         <input name="street_address" type="text" value="" class="form-control" placeholder="Street Address: *">
                                                     </div>
@@ -166,9 +182,9 @@
                                                     <div class="form-group">
                                                         <input type="text" value="" class="form-control" placeholder="City: *">
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
-                                                <div class="col-md-6">
+                                                {{-- <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input required type="email" name="email" value="" class="form-control" placeholder="Email: *">
                                                     </div>
@@ -178,10 +194,11 @@
                                                     <div class="form-group">
                                                         <input type="text" value="" class="form-control" placeholder="Phone: *">
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 <div class="col-md-12">
-                                                    <button type="submit" class="btn lab-btn btn-block">Create account</button>
+                                                    {{-- <button type="submit" class="btn lab-btn btn-block">Create account</button> --}}
+                                                    <input type="submit" value="Calculate" class="btn btn-primary">
                                                 </div>
                                                 </form>
                                             </div>

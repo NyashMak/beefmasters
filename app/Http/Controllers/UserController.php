@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Request;
+use Hamcrest\Type\IsObject;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Http;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 use App\Models\User;
 use App\Models\User_Address;
 use App\Models\User_Payment;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -16,7 +21,16 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $cart = Cart::content();
+        $cartArray = $cart->toArray();
+        $decimals = 2;
+        $decimalSeparator = ".";
+        $thousandSeparator = " ";
+        $priceTotalBeforeDiscountTax = Cart::priceTotal($decimals, $decimalSeparator, $thousandSeparator);
+        $subtotal = Cart::subtotal($decimals, $decimalSeparator, $thousandSeparator);
+        $tax = Cart::tax($decimals, $decimalSeparator, $thousandSeparator);
+        $total = Cart::total($decimals, $decimalSeparator, $thousandSeparator);
+        return view('shop_front.auth.login', compact('cart', 'subtotal'));
     }
 
     /**

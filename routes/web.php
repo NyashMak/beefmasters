@@ -24,6 +24,11 @@ Route::get('/about', function () {
     return view('shop_front.about');
 })->name('about');
 
+Route::get('/test', function () {
+    return view('shop_front.test');
+})->name('test');
+
+Route::get('/login', [UserController::class, 'index'])->name('login');
 Route::post('/register-user', [UserController::class, 'store'])->name('register_user');
 
 Route::resource('/shop',BMProductController::class);
