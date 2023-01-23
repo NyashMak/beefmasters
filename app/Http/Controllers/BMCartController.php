@@ -33,6 +33,9 @@ class BMCartController extends Controller
 
     public function index(){
 
+        $deliveryAddress = "";
+        $deliveryFee = "";
+        
         $cart = Cart::content();
         $cartArray = $cart->toArray();
         $decimals = 2;
@@ -44,7 +47,7 @@ class BMCartController extends Controller
         $total = Cart::total($decimals, $decimalSeparator, $thousandSeparator);
         // dd($priceTotalBeforeDiscountTax);
         // dd($cart->toArray());
-        return view('shop_front.cart', compact('cart', 'cartArray', 'priceTotalBeforeDiscountTax', 'subtotal', 'tax', 'total'));
+        return view('shop_front.cart', compact('cart', 'cartArray', 'priceTotalBeforeDiscountTax', 'subtotal', 'tax', 'total', 'deliveryAddress', 'deliveryFee'));
     }
 
     public function update(Request $request){

@@ -44,51 +44,63 @@
             <!-- Sign In Block -->
             <div class="block block-rounded block-transparent block-fx-pop w-100 mb-0 overflow-hidden bg-image" style="background-image: url({{asset('assets/admin/media/photos/photo20@2x.jpg')}});">
               <div class="row g-0">
-                <div class="col-md-6 order-md-1 bg-body-extra-light">
+                <div class="col-md-8 order-md-1 bg-body-extra-light">
                   <div class="block-content block-content-full px-lg-5 py-md-5 py-lg-6">
                     <!-- Header -->
                     <div class="mb-2 text-center">
                       <a class="link-fx fw-bold fs-1" href="index.html">
                         <span style="color: brown">BeefMasters</span>
                       </a>
-                      <p class="text-uppercase fw-bold fs-sm text-muted">Sign In</p>
+                      <p class="text-uppercase fw-bold fs-sm text-muted">New Account</p>
                     </div>
                     <!-- END Header -->
 
-                    <!-- Sign In Form -->
-                    <!-- jQuery Validation (.js-validation-signin class is initialized in js/pages/op_auth_signin.min.js which was auto compiled from _js/pages/op_auth_signin.js) -->
-                    <!-- For more info and examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                    <form  action="" method="POST">
+                    <form  action="{{route('create-user')}}" method="POST">
                       @csrf
                       <div class="mb-4">
-                        <input type="text" class="form-control form-control-alt" id="login-username" name="login-username" placeholder="Username">
+                        <input type="text" class="form-control form-control-alt" id="first_name" name="first_name" placeholder="First Name">
+                        <span class='text-danger'>@error('name') {{$message}}@enderror</span>
                       </div>
                       <div class="mb-4">
-                        <input type="password" class="form-control form-control-alt" id="login-password" name="login-password" placeholder="Password">
+                        <input type="text" class="form-control form-control-alt" id="last_name" name="last_name" placeholder="Last Name">
+                        <span class='text-danger'>@error('name') {{$message}}@enderror</span>
+                      </div>
+                      <div class="mb-4">
+                        <input type="email" class="form-control form-control-alt" id="email" name="email" placeholder="Email">
+                        <span class='text-danger'>@error('name') {{$message}}@enderror</span>
+                      </div>
+                      <div class="mb-4">
+                        <input type="password" class="form-control form-control-alt" id="password" name="password" placeholder="Password">
+                        <span><small style="color:red"> * Please save this password somewhere safe! *</small></span>
+                        <span class='text-danger'>@error('name') {{$message}}@enderror</span>
+                      </div>
+                      <div class="mb-4">
+                        <input type="address" class="form-control form-control-alt" id="address" name="address" placeholder="Enter Address">
+                        <span class='text-danger'>@error('name') {{$message}}@enderror</span>
                       </div>
                       <div class="mb-4">
                         <button type="submit" class="btn w-100 btn-hero btn-success">
-                          <i class="fa fa-fw fa-sign-in-alt opacity-50 me-1"></i> Log In
+                          <i class="fa fa-fw fa-sign-in-alt opacity-50 me-1"></i> Register
                         </button>
                       </div>
                     </form>
                     <div class="mb-4">
                       <button class="btn w-100 btn-hero btn-warning">
-                        <i class="fa fa-fw fa-sign-in-alt opacity-50 me-1"></i> <a href="">Register</a>
+                        <i class="fa fa-fw fa-sign-in-alt opacity-50 me-1"></i> <a href="">Login</a>
                       </button>
                     </div>
                     <!-- END Sign In Form -->
                   </div>
                 </div>
-                <div class="col-md-6 order-md-0 bg-primary-dark-op d-flex align-items-center">
+                <div class="col-md-4 order-md-0 bg-primary-dark-op d-flex align-items-center">
                   <div class="block-content block-content-full px-lg-5 py-md-5 py-lg-6">
                     <div class="d-flex">
-                      <a class="flex-shrink-0 img-link me-3" href="javascript:void(0)">
+                      {{-- <a class="flex-shrink-0 img-link me-3" href="javascript:void(0)">
                         <img class="img-avatar img-avatar-thumb" src="{{asset('assets/admin/media/avatars/avatar12.jpg')}}" alt="">
-                      </a>
+                      </a> --}}
                       <div class="flex-grow-1">
                         <p class="text-white fw-semibold mb-1">
-                          Login to continue to with your order or register if you do not have an account
+                          It seems you do not have an account with us. To continue to with your order you must register your account first.
                         </p>
                       </div>
                     </div>

@@ -29,7 +29,8 @@ Route::get('/test', function () {
 })->name('test');
 
 Route::get('/login', [UserController::class, 'index'])->name('login');
-Route::post('/register-user', [UserController::class, 'store'])->name('register_user');
+Route::get('/register-user', [UserController::class, 'create'])->name('register-user');
+Route::post('/create-account', [UserController::class, 'store'])->name('create-user');
 
 Route::resource('/shop',BMProductController::class);
 Route::post('/add-to-cart', [BMCartController::class, 'add_to_cart'])->name('add-to-cart');

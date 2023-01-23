@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 use App\Models\User;
 use App\Models\User_Address;
 use App\Models\User_Payment;
-
+use DB; use Mail; use Sentinel; use Activation; use Validator;
 class UserController extends Controller
 {
     /**
@@ -30,7 +30,7 @@ class UserController extends Controller
         $subtotal = Cart::subtotal($decimals, $decimalSeparator, $thousandSeparator);
         $tax = Cart::tax($decimals, $decimalSeparator, $thousandSeparator);
         $total = Cart::total($decimals, $decimalSeparator, $thousandSeparator);
-        return view('shop_front.auth.login', compact('cart', 'subtotal'));
+        return view('shop_front.auth.login', compact('cart', 'subtotal', 'total'));
     }
 
     /**
@@ -40,6 +40,16 @@ class UserController extends Controller
      */
     public function create()
     {
+        $cart = Cart::content();
+        $cartArray = $cart->toArray();
+        $decimals = 2;
+        $decimalSeparator = ".";
+        $thousandSeparator = " ";
+        $priceTotalBeforeDiscountTax = Cart::priceTotal($decimals, $decimalSeparator, $thousandSeparator);
+        $subtotal = Cart::subtotal($decimals, $decimalSeparator, $thousandSeparator);
+        $tax = Cart::tax($decimals, $decimalSeparator, $thousandSeparator);
+        $total = Cart::total($decimals, $decimalSeparator, $thousandSeparator);
+        return view('shop_front.auth.register', compact('cart', 'subtotal', 'total'));
 
     }
 
@@ -52,11 +62,14 @@ class UserController extends Controller
     public function store(Request $request)
     {
                 // dd($request);
-                // $request->validate([
-                //     'first_name' => 'required',
-                //     'last_name' => 'required',
-                //     'email' => 'required',
-                // ]);
+                $this->validate($request,[
+                    'first_name'=>'required',
+                    'last_name'=>'required',
+                    'email'=>'required|unique',
+                    'password'=>'required',
+                    'address'=>'required'
+                ]);
+        dd('validation failed');
                 request()->request->add(['name'=> $request->first_name.' '.$request->last_name]);
                 request()->request->add(['is_customer'=>1]);
                 $input = $request->all();

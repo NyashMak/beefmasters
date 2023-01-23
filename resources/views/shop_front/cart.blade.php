@@ -31,7 +31,7 @@
                                             </div> <br>
                                             <div class="outline-select">
                                                 <label style="color: red">Enter destination to calculate delivery fee!</label>
-                                                @if($deliveryAddress)
+                                                @if($deliveryAddress != "")
                                                     <input class="form-control" id="to_places" value="{{$deliveryAddress}}"/>
                                                     <input id="destination" name="destination" type="hidden" value="{{$deliveryAddress}}"/><br>
                                                 @else
@@ -71,7 +71,7 @@
                                                         <input id="show_delivery" name="show_delivery" style="border: none"  class="pull-right"/>
                                                     }
                                                     @else
-                                                        @if($deliveryFee)
+                                                        @if($deliveryFee != "")
                                                             <input id="show_delivery" name="show_delivery" style="border: none" value="{{$deliveryFee}}" class="pull-right"/>
                                                         @else
                                                             <input id="show_delivery" name="show_delivery" style="border: none" value="Enter Destination First" class="pull-right"/>
