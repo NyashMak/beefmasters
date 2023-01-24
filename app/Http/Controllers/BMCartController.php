@@ -96,6 +96,15 @@ class BMCartController extends Controller
 
     public function checkout(Request $request){
         // dd($request);
+        $deliveryAddress = $request->delivery_address;
+        $deliveryFee = $request->delivery_fee;
+        $total = $request->total;
+        if ($deliveryFee == 'Free Delivery'){
+            $deliveryFee = 0;
+        }
+        if ($deliveryFee == 'Collect in-store'){
+            $deliveryFee = null;
+        }
 
         //Get Logged In User Details
         $user = Auth::user();
@@ -110,15 +119,41 @@ class BMCartController extends Controller
         $subtotal = Cart::subtotal($decimals, $decimalSeparator, $thousandSeparator);
         $tax = Cart::tax($decimals, $decimalSeparator, $thousandSeparator);
         $discount = Cart::discount();
-        $total = Cart::total($decimals, $decimalSeparator, $thousandSeparator);
+        $totalExDelivery = Cart::total($decimals, $decimalSeparator, $thousandSeparator);
 
-        dd($cartArray);
+        //Create Order record
+        $order = new Order_Detail();
+        $orderSID = Str::uuid()->toString();
+        $order->sid = $orderSID;
+        $order->subtotal = $subtotal;
+        $order->discount = $discount;
+        $order->tax = $tax;
+        $order->delivery = $deliveryFee;
+        $order->delivery_address = $deliveryAddress;
+        $order->total = $request->total;
+        $order->user_id = Auth::user()->sid;
+        $result = $order->save();
 
-        //Create Order
+        if ($result){
+            // dd($cartArray);
+            $newOrder = Order_Detail::where('sid', $orderSID)->first();
+            $orderID = $newOrder->sid;
+            // Create order list records
+            foreach ($cartArray as $cartItem){
+                $orderItem = new Order_Item();
+                $orderItem->sid = Str::uuid()->toString();
+                $orderItem->name = $cartItem['name'];
+                $orderItem->price = $cartItem['price'];
+                $orderItem->quantity = $cartItem['qty'];
+                $orderItem->order_id = $orderID;
+                $orderItem->save();
+            }
+            $order_items = Order_Item::where('order_id', $orderID)->get();
+            // dd($order_items);
+        }
 
-        // Get shipping cost from cart page via POST
-        $shipping = 0;
-        // dd($cartArray);
+
+
         $data = array();
         $passPhrase = 'beefmasterstest';
         // function generateSignature($data, $passPhrase = null) {
@@ -147,6 +182,6 @@ class BMCartController extends Controller
         // $signature = generateSignature( $data, $passPhrase );
         // dd($signature);
 
-        return view('shop_front.checkout', compact('cart', 'cartArray', 'priceTotalBeforeDiscountTax', 'subtotal', 'tax', 'total', 'discount', 'shipping'));
+        return view('shop_front.checkout', compact('cart', 'cartArray', 'priceTotalBeforeDiscountTax', 'subtotal', 'tax', 'total', 'discount', 'deliveryFee', 'deliveryAddress', 'order_items'));
     }
 }

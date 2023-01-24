@@ -43,6 +43,8 @@
 	
 	{{-- <script defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE&region=za&libraries=places"></script> --}}
 
+	<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiDGvDii1PsXu8eLpcssGsmlj_0PPbf4U&region=za&libraries=places"></script>
+
 	
 
 	@livewireStyles
@@ -220,36 +222,66 @@
 				if (distance_in_kilo > 10 && distance_in_kilo < 25 && subtotalText > 300){
 					var delivery = document.getElementById('delivery');
 					var show_delivery = document.getElementById('show_delivery');
+					var cartDeliveryFee = document.getElementById('cartDeliveryFee');
+					var cartDeliveryAddress = document.getElementById('cartDeliveryAddress');
+
+					cartDeliveryAddress.setAttribute('value', set_address);
+					cartDeliveryFee.setAttribute('value', 150);
 					delivery.setAttribute('value',150);
 					show_delivery.setAttribute('value',150);
 				}
 				else if(distance_in_kilo < 10 && subtotalText < 300){
 					var delivery = document.getElementById('delivery');
 					var show_delivery = document.getElementById('show_delivery');
+					var cartDeliveryFee = document.getElementById('cartDeliveryFee');
+					var cartDeliveryAddress = document.getElementById('cartDeliveryAddress');
+
+					cartDeliveryAddress.setAttribute('value', set_address);
+					cartDeliveryFee.setAttribute('value', 'Collect in-store');
 					delivery.setAttribute('value','Collect in-store');
 					show_delivery.setAttribute('value','Collect in-store');
 				}
 				else if(distance_in_kilo < 10 && subtotalText > 300){
 					var delivery = document.getElementById('delivery');
 					var show_delivery = document.getElementById('show_delivery');
+					var cartDeliveryFee = document.getElementById('cartDeliveryFee');
+					var cartDeliveryAddress = document.getElementById('cartDeliveryAddress');
+
+					cartDeliveryAddress.setAttribute('value', set_address);
+					cartDeliveryFee.setAttribute('value', 'Free Delivery');
 					delivery.setAttribute('value','Free Delivery');
 					show_delivery.setAttribute('value','Free Delivery');
 				}
 				else if(distance_in_kilo > 10 && distance_in_kilo < 25 && subtotalText < 300){
 					var delivery = document.getElementById('delivery');
 					var show_delivery = document.getElementById('show_delivery');
+					var cartDeliveryFee = document.getElementById('cartDeliveryFee');
+					var cartDeliveryAddress = document.getElementById('cartDeliveryAddress');
+
+					cartDeliveryAddress.setAttribute('value', set_address);
+					cartDeliveryFee.setAttribute('value', 150);
 					delivery.setAttribute('value',150);
 					show_delivery.setAttribute('value',150);
 				}
 				else if(distance_in_kilo < 25 && subtotalText < 300){
 					var delivery = document.getElementById('delivery');
 					var show_delivery = document.getElementById('show_delivery');
+					var cartDeliveryFee = document.getElementById('cartDeliveryFee');
+					var cartDeliveryAddress = document.getElementById('cartDeliveryAddress');
+
+					cartDeliveryAddress.setAttribute('value', set_address);
+					cartDeliveryFee.setAttribute('value', 'Collect in-store');
 					delivery.setAttribute('value','Collect in-store');
 					show_delivery.setAttribute('value','Collect in-store');
 				}
 				else if(distance_in_kilo > 25){
 					var delivery = document.getElementById('delivery');
 					var show_delivery = document.getElementById('show_delivery');
+					var cartDeliveryFee = document.getElementById('cartDeliveryFee');
+					var cartDeliveryAddress = document.getElementById('cartDeliveryAddress');
+
+					cartDeliveryAddress.setAttribute('value', set_address);
+					cartDeliveryFee.setAttribute('value', 'Collect in-store');
 					delivery.setAttribute('value','Collect in-store');
 					show_delivery.setAttribute('value','Collect in-store');
 				}

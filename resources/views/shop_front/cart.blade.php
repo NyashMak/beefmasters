@@ -99,8 +99,8 @@
                             </form>
                             <form method="POST" action="{{route('checkout')}}" class="cart-checkout">
                                 @csrf
-                                <input hidden type="number" name="delivery_fee" value="{{$deliveryFee}}">
-                                <input hidden type="text" name="delivery_address" value="{{$deliveryAddress}}">
+                                <input hidden type="number" id="cartDeliveryFee" name="delivery_fee" value="{{$deliveryFee}}">
+                                <input hidden type="text" id="cartDeliveryAddress" name="delivery_address" value="{{$deliveryAddress}}">
                                 <input hidden type="number" name="total" value="{{$total}}">
                                 <input type="submit" value="Proceed to Checkout">
                             </form>
