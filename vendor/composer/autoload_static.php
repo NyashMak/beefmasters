@@ -540,6 +540,7 @@ class ComposerStaticInit2996a3d2ae8cf0dd0d6a83d08cc4e863
         'App\\Http\\Controllers\\ShopController' => __DIR__ . '/../..' . '/app/Http/Controllers/ShopController.php',
         'App\\Http\\Controllers\\ShoppingSessionController' => __DIR__ . '/../..' . '/app/Http/Controllers/ShoppingSessionController.php',
         'App\\Http\\Controllers\\UserAddressController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserAddressController.php',
+        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Controllers\\UserPaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserPaymentController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Livewire\\CartBottom' => __DIR__ . '/../..' . '/app/Http/Livewire/CartBottom.php',

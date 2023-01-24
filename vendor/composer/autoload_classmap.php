@@ -25,6 +25,7 @@ return array(
     'App\\Http\\Controllers\\ShopController' => $baseDir . '/app/Http/Controllers/ShopController.php',
     'App\\Http\\Controllers\\ShoppingSessionController' => $baseDir . '/app/Http/Controllers/ShoppingSessionController.php',
     'App\\Http\\Controllers\\UserAddressController' => $baseDir . '/app/Http/Controllers/UserAddressController.php',
+    'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
     'App\\Http\\Controllers\\UserPaymentController' => $baseDir . '/app/Http/Controllers/UserPaymentController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Livewire\\CartBottom' => $baseDir . '/app/Http/Livewire/CartBottom.php',
