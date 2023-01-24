@@ -4,6 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Order_Detail;
 use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
+use Hamcrest\Type\IsObject;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Http;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Inventory;
+use App\Models\Discount;
+use App\Models\Order_Item;
 
 class OrderDetailController extends Controller
 {
@@ -35,7 +46,7 @@ class OrderDetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

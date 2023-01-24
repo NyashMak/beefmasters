@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Hamcrest\Type\IsObject;
 use Illuminate\Support\Str;
@@ -12,6 +13,8 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Inventory;
 use App\Models\Discount;
+use App\Models\Order_Detail;
+use App\Models\Order_Item;
 
 class BMCartController extends Controller
 {
@@ -92,7 +95,12 @@ class BMCartController extends Controller
     }
 
     public function checkout(Request $request){
-        dd($request);
+        // dd($request);
+
+        //Get Logged In User Details
+        $user = Auth::user();
+
+        //Get Cart Details
         $cart = Cart::content();
         $cartArray = $cart->toArray();
         $decimals = 2;
@@ -103,6 +111,10 @@ class BMCartController extends Controller
         $tax = Cart::tax($decimals, $decimalSeparator, $thousandSeparator);
         $discount = Cart::discount();
         $total = Cart::total($decimals, $decimalSeparator, $thousandSeparator);
+
+        dd($cartArray);
+
+        //Create Order
 
         // Get shipping cost from cart page via POST
         $shipping = 0;
