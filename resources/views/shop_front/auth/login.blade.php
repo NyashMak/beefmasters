@@ -55,16 +55,31 @@
                     </div>
                     <!-- END Header -->
 
-                    <!-- Sign In Form -->
-                    <!-- jQuery Validation (.js-validation-signin class is initialized in js/pages/op_auth_signin.min.js which was auto compiled from _js/pages/op_auth_signin.js) -->
-                    <!-- For more info and examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                    <form  action="" method="POST">
+                    <div>
+                      @if(Session::has('success'))
+                        <div class="alert alert-success mx-auto">
+                            {{Session::get('success')}}
+                        </div>
+                      @endif
+                      @if ($errors->any())
+                        <div class="alert alert-danger mx-auto">
+                          <ul>
+                            @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                            @endforeach
+                          </ul>
+                        </div>
+                      @endif
+                      
+                    </div>
+
+                    <form  action="{{route('login-user')}}" method="POST">
                       @csrf
                       <div class="mb-4">
-                        <input type="text" class="form-control form-control-alt" id="login-username" name="login-username" placeholder="Username">
+                        <input required type="email" class="form-control form-control-alt" id="email" name="email" placeholder="Email">
                       </div>
                       <div class="mb-4">
-                        <input type="password" class="form-control form-control-alt" id="login-password" name="login-password" placeholder="Password">
+                        <input required type="password" class="form-control form-control-alt" id="password" name="password" placeholder="Password">
                       </div>
                       <div class="mb-4">
                         <button type="submit" class="btn w-100 btn-hero btn-success">

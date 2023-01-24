@@ -29,6 +29,7 @@ Route::get('/test', function () {
 })->name('test');
 
 Route::get('/login', [UserController::class, 'index'])->name('login');
+Route::post('/login-user', [UserController::class, 'loginUser'])->name('login-user');
 Route::get('/register-user', [UserController::class, 'create'])->name('register-user');
 Route::post('/create-account', [UserController::class, 'store'])->name('create-user');
 

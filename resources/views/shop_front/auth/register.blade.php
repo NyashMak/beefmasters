@@ -54,28 +54,45 @@
                       <p class="text-uppercase fw-bold fs-sm text-muted">New Account</p>
                     </div>
                     <!-- END Header -->
+                    <div>
+                      @if(Session::has('success'))
+                        <div class="alert alert-success mx-auto">
+                            {{Session::get('success')}}
+                        </div>
+                      @endif
+                      @if ($errors->any())
+                        <div class="alert alert-danger mx-auto">
+                          <ul>
+                            @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                            @endforeach
+                          </ul>
+                        </div>
+                      @endif
+                      
+                    </div>
 
                     <form  action="{{route('create-user')}}" method="POST">
                       @csrf
                       <div class="mb-4">
-                        <input type="text" class="form-control form-control-alt" id="first_name" name="first_name" placeholder="First Name">
+                        <input required type="text" class="form-control form-control-alt" id="first_name" name="first_name" placeholder="First Name">
                         <span class='text-danger'>@error('name') {{$message}}@enderror</span>
                       </div>
                       <div class="mb-4">
-                        <input type="text" class="form-control form-control-alt" id="last_name" name="last_name" placeholder="Last Name">
+                        <input required type="text" class="form-control form-control-alt" id="last_name" name="last_name" placeholder="Last Name">
                         <span class='text-danger'>@error('name') {{$message}}@enderror</span>
                       </div>
                       <div class="mb-4">
-                        <input type="email" class="form-control form-control-alt" id="email" name="email" placeholder="Email">
+                        <input required type="email" class="form-control form-control-alt" id="email" name="email" placeholder="Email">
                         <span class='text-danger'>@error('name') {{$message}}@enderror</span>
                       </div>
                       <div class="mb-4">
-                        <input type="password" class="form-control form-control-alt" id="password" name="password" placeholder="Password">
+                        <input required type="password" class="form-control form-control-alt" id="password" name="password" placeholder="Password">
                         <span><small style="color:red"> * Please save this password somewhere safe! *</small></span>
                         <span class='text-danger'>@error('name') {{$message}}@enderror</span>
                       </div>
                       <div class="mb-4">
-                        <input type="address" class="form-control form-control-alt" id="address" name="address" placeholder="Enter Address">
+                        <input required type="address" class="form-control form-control-alt" id="address" name="address" placeholder="Enter Address">
                         <span class='text-danger'>@error('name') {{$message}}@enderror</span>
                       </div>
                       <div class="mb-4">
