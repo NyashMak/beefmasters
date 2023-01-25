@@ -127,6 +127,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->is_customer = 1;
+        $user->phone = $request->phone;
         $user->address = $request->address;
         $user->sid = Str::uuid()->toString();
         $result = $user->save();

@@ -98,16 +98,29 @@ class BMCartController extends Controller
         // dd($request);
         $deliveryAddress = $request->delivery_address;
         $deliveryFee = $request->delivery_fee;
+        // dd($deliveryFee);
         $total = $request->total;
         if ($deliveryFee == 'Free Delivery'){
-            $deliveryFee = 0;
+            $deliveryFee = 'Free Delivery';
         }
         if ($deliveryFee == 'Collect in-store'){
             $deliveryFee = null;
         }
+        if ($deliveryFee == null){
+            $deliveryAddress = 'Collect-in-store';
+            $deliveryFee = 0;
+        }
+        if (!is_string($deliveryFee)){
+            $deliveryFee = $deliveryFee + 0;
+        }
 
         //Get Logged In User Details
         $user = Auth::user();
+        $full_name = explode(' ',$user->name);
+        $first_name = $full_name[0];
+        $last_name = $full_name[1];
+        $phone = $user->phone;
+        $email = $user->email;
 
         //Get Cart Details
         $cart = Cart::content();
@@ -182,6 +195,6 @@ class BMCartController extends Controller
         // $signature = generateSignature( $data, $passPhrase );
         // dd($signature);
 
-        return view('shop_front.checkout', compact('cart', 'cartArray', 'priceTotalBeforeDiscountTax', 'subtotal', 'tax', 'total', 'discount', 'deliveryFee', 'deliveryAddress', 'order_items'));
+        return view('shop_front.checkout', compact('cart', 'cartArray', 'priceTotalBeforeDiscountTax', 'subtotal', 'tax', 'total', 'discount', 'deliveryFee', 'deliveryAddress', 'order_items', 'first_name', 'last_name', 'email', 'phone', 'orderSID'));
     }
 }

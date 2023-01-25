@@ -92,6 +92,10 @@
                         <span class='text-danger'>@error('name') {{$message}}@enderror</span>
                       </div>
                       <div class="mb-4">
+                        <input required type="text" class="form-control form-control-alt" id="phone" name="phone" placeholder="Enter Phone Number">
+                        <span class='text-danger'>@error('name') {{$message}}@enderror</span>
+                      </div>
+                      <div class="mb-4">
                         <input required type="address" class="form-control form-control-alt" id="address" name="address" placeholder="Enter Address">
                         <span class='text-danger'>@error('name') {{$message}}@enderror</span>
                       </div>

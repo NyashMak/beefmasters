@@ -48,10 +48,10 @@
                 <div class="clearfix">
                     <div class="row">
                         <div class="col-xs-6">
-                            <a href="checkout-1.html" class="btn btn-clean-dark"><span class="icon icon-chevron-left"></span> Back to cart</a>
+                            <a href="checkout-1.html" style="font-weight:bold; color: white;" class="btn btn-clean-dark"><span class="icon icon-chevron-left"></span> Back to cart</a>
                         </div>
                         <div class="col-xs-6 text-right">
-                            <a href="checkout-3.html" class="btn lab-btn"><span class="icon icon-cart"></span> Go to payment</a>
+                            <a href="checkout-3.html" style="font-weight:bold; color: white;" class="btn lab-btn"><span class="icon icon-cart"></span> Go to payment</a>
                         </div>
                     </div>
                 </div>
@@ -103,102 +103,64 @@
                                                 </div>
 
                                                 <div class="col-xs-6 text-right">
-                                                    <a href="#" class="btn lab-btn">Login</a>
+                                                    <a href="#" style="font-weight:bold; color: white;" class="btn lab-btn">Login</a>
                                                 </div>
                                             </div>
                                         </div> <!--/signin-->
                                         <!--signup-->
 
                                         <div class="login-block login-block-signup">
-                                            <div>
-                                                <p style="color: red">If you already have an account click the "Log in" button</p>
-                                            </div>
-
-                                            <div class="h4">Register now <a href="javascript:void(0);" class="btn lab-btn btn-xs btn-login pull-right">Log in</a></div>
-
+                                            <div class="h4">Order Details</div>
                                             <hr />
-
                                             <input hidden type="number" name="is_customer" value="1">
                                             <div class="row">
                                                 {{-- <form action="{{route('register_user')}}" method="POST">
                                                 @csrf --}}
                                                 <form id="distance_form">
-                                                {{-- <input hidden type="number" name="is_customer" value="1">
+                                                <input hidden type="number" name="is_customer" value="1">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input required name="first_name" type="text" value="" class="form-control" placeholder="First name: *">
+                                                        <input disabled name="first_name" type="text" value="{{$first_name}}" class="form-control" placeholder="First name: *">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input required name="last_name" type="text" value="" class="form-control" placeholder="Last name: *">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12">
-
-                                                    <div class="form-group">
-                                                        <input required name="password" type="text" value="" class="form-control" placeholder="Password: *"><span style="color: red"><small> Please save this password somewhere!</small></span>
-                                                    </div>
-                                                </div> --}}
-
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label >Origin</label>
-                                                        <input id="from_places" name="from_places" value="" class="form-control" placeholder="Enter a Location: *">
-                                                        <input id="origin" type="hidden" name="origin">
+                                                        <input disabled name="last_name" type="text" value="{{$last_name}}" class="form-control" placeholder="Last name: *">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label >Destination</label>
-                                                        <input id="to_places" name="to_places" value="" class="form-control" placeholder="Enter a Location: *">
+                                                        <input type="hidden" class="form-control" id="from_places" placeholder="Enter Origin"/>
+                                                        <input id="origin" name="origin" required="" type="hidden" value="53 Gie Road, West Riding, Cape Town"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label >Phone Number</label>
+                                                        <input disabled id="to_places" name="to_places" value="" class="form-control" placeholder="Enter a Phone Number: *">
                                                         <input id="destination" type="hidden" name="destination">
                                                     </div>
                                                 </div>
-{{-- 
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <input name="street_address" type="text" value="" class="form-control" placeholder="Street Address: *">
-                                                    </div>
-                                                </div>
 
                                                 <div class="col-md-12">
-
                                                     <div class="form-group">
-                                                        <input name="suburb" type="text" value="" class="form-control" placeholder="Suburb: *">
+                                                        <label >Delivering To</label>
+                                                        <input disabled id="to_places" name="to_places" value="{{$deliveryAddress}}" class="form-control" placeholder="Enter a Location: *">
+                                                        <input id="destination" type="hidden" name="destination">
                                                     </div>
                                                 </div>
-
-                                                <div class="col-md-4">
+                                                <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <input name="zip_code" type="text" value="" class="form-control" placeholder="Zip code: *">
+                                                        <label >Additional Instructions</label>
+                                                        <textarea disabled id="note" name="note" value="" class="form-control"></textarea>
                                                     </div>
                                                 </div>
-
-                                                <div class="col-md-8">
-                                                    <div class="form-group">
-                                                        <input type="text" value="" class="form-control" placeholder="City: *">
-                                                    </div>
-                                                </div> --}}
-
-                                                {{-- <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <input required type="email" name="email" value="" class="form-control" placeholder="Email: *">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="text" value="" class="form-control" placeholder="Phone: *">
-                                                    </div>
-                                                </div> --}}
-
                                                 <div class="col-md-12">
                                                     {{-- <button type="submit" class="btn lab-btn btn-block">Create account</button> --}}
-                                                    <input type="submit" value="Calculate" class="btn btn-primary">
+                                                    <input type="submit" class="btn lab-btn" style="font-weight:bold; color: white;" value="Add Instructions" class="btn btn-primary">
                                                 </div>
                                                 </form>
                                             </div>
@@ -211,39 +173,33 @@
                             <div class="col-md-6">
 
                                 <div class="white-block">
-
-                                    <div class="h4">Choose delivery</div>
-
+                                    <div class="h4">Important to note</div>
                                     <hr />
-
-                                    <span class="checkbox">
+                                    {{-- <span class="checkbox">
                                         <input type="radio" id="deliveryId1" name="deliveryOption">
                                         <label for="deliveryId1">Delivery 1-3 Days - <strong>$50,00</strong></label>
                                     </span>
-
                                     <span class="checkbox">
                                         <input type="radio" id="deliveryId2" name="deliveryOption">
                                         <label for="deliveryId2">Fast delivery - <strong>$199,00</strong></label>
                                     </span>
-
                                     <span class="checkbox">
                                         <input type="radio" id="deliveryId3" name="deliveryOption">
                                         <label for="deliveryId3">Pick up in the store - <strong>Free</strong></label>
                                     </span>
-
-                                    <hr />
+                                    <hr /> --}}
 
                                     <div class="clearfix">
-                                        <p>A frequently overlooked, powerful fulfillment option is offering local pick-up. If you have a physical location and can allow your customers to forgo paying shipping costs altogether, you should!</p>                            <p><strong>Benefits:</strong></p>
                                         <ul>
-                                            <li>Avoid both shipping and packaging costs</li>
-                                            <li>Develop a face-to-face relationship with your customers</li>
-                                            <li>Potential for additional purchases while customers are at your store</li>
+                                            <li>Free Delivery is awarded if your purchase is more than R300 and the delivery address falls within a 10km radius from our store</li>
+                                            <li>A delivery fee is charged your delivery location exceeds 10km from our store</li>
+                                            <li>We do not deliver to an address that is outside a 25km radius from our store. Customers will have to collect their order from our store</li>
                                         </ul>
                                         <p><strong>Challenges:</strong></p>
                                         <ul>
-                                            <li>Limited business hours can sometimes make it difficult to coordinate pickup</li>
-                                            <li>Shoppers who cross state lines or ZIP codes may not know the sales tax rates in your area</li>
+                                            <li>Deliveries will only be done between 08:00AM and 06:00PM during week days</li>
+                                            <li>On Saturdays, deliveries will done between 08:00AM and 03:00PM</li>
+                                            <li>There will be no deliveries on Sundays and Public Holidays</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -317,11 +273,11 @@
 
                         <div class="cart-block cart-block-footer clearfix">
                             <div>
-                                <strong>Shipping</strong>
+                                <strong>Delivery</strong>
                             </div>
                             <div>
-                                @if($shipping)
-                                <span>{{$shipping}}</span>
+                                @if($deliveryFee)
+                                <span>{{$deliveryFee}}</span>
                                 @else
                                 <span>R 0,00</span>
                                 @endif
@@ -359,7 +315,7 @@
                 <div class="clearfix">
                     <div class="row">
                         <div class="col-xs-6">
-                            <a href="checkout-1.html" class="btn btn-clean-dark"><span class="icon icon-chevron-left"></span> Back to cart</a>
+                            <a href="checkout-1.html" style="font-weight:bold; color: white;" class="btn btn-clean-dark"><span class="icon icon-chevron-left"></span> Back to cart</a>
                         </div>
     
     {{-- Payfast Form --}}
@@ -375,18 +331,18 @@
             <input type="hidden" name="notify_url" value="https://www.example.com/notify">
 
             {{-- Customer Details --}}
-            <input type="hidden" name="name_first" value="Nyasha">
-            <input type="hidden" name="name_last" value="Mak">
-            <input type="hidden" name="email_address" value="lmakwavarara@rocketmail.com">
-            <input type="hidden" name="cell_number" value="0823456789"> 
+            <input type="hidden" name="name_first" value="{{$first_name}}">
+            <input type="hidden" name="name_last" value="{{$last_name}}">
+            <input type="hidden" name="email_address" value="{{$email}}">
+            <input type="hidden" name="cell_number" value="{{$phone}}"> 
 
             {{-- Transaction Details --}}
             <input type="hidden" name="m_payment_id" value="01AB">
-            <input type="hidden" name="amount" value="100.00">
-            <input type="hidden" name="item_name" value="Test Item">
-            <input type="hidden" name="item_description" value="A test product">
+            <input type="hidden" name="amount" value="{{$total}}">
+            <input type="hidden" name="item_name" value="{{$orderSID}}">
+            <input type="hidden" name="item_description" value="{{$orderSID}}">
             <input type="hidden" name="custom_int1" value="2">
-            <input type="hidden" name="custom_str1" value="Extra order information">
+            <input type="hidden" name="custom_str1" value="{{$deliveryFee}}">
 
             {{-- Transaction Options --}}
             <input type="hidden" name="email_confirmation" value="1">
@@ -399,7 +355,7 @@
             <input type="hidden" name="signature" value=""> 
             
     
-            <button type="submit" class="btn lab-btn"><span class="icon icon-cart"></span> Go to payment</button>
+            <button type="submit" style="font-weight:bold; color: white;" class="btn lab-btn"><span class="icon icon-cart"></span> Go to payment</button>
         </form>
     </div>
     {{-- End of Payfast Form --}}
