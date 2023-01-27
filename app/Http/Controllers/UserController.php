@@ -50,10 +50,17 @@ class UserController extends Controller
 
         // dd($request);
         $user = User::where('email', $request->email)->first();
+        $name = explode(' ', $user->name);
+        $first_name = $name[0];
+        $last_name = $name[1];
+
         if (is_object($user)){
             if (Hash::check($request->password, $user->password)) {
                 //Authorize user
                 Auth::login($user, $remember = true);
+
+                $deliveryAddress = '';
+                $deliveryFee = 'Enter Address First';
 
                 //Get Cart Content
                 $cart = Cart::content();
@@ -71,7 +78,7 @@ class UserController extends Controller
                 $data = array();
                 $passPhrase = 'beefmasterstest';
 
-                return view('shop_front.checkout', compact('cart', 'cartArray', 'priceTotalBeforeDiscountTax', 'subtotal', 'tax', 'total', 'discount', 'shipping'));
+                return view('shop_front.cart', compact('cart', 'cartArray', 'priceTotalBeforeDiscountTax', 'subtotal', 'tax', 'total', 'discount', 'shipping', 'first_name', 'last_name', 'deliveryAddress', 'deliveryFee'));
             }
             else{
                 //The password is incorrect

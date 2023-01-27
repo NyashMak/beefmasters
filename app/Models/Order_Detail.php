@@ -22,6 +22,7 @@ class Order_Detail extends Model
         'total',
         'user_id',
         'delivery_address',
-        'paid'
+        'paid',
+        'order_nr'
     ];
 }

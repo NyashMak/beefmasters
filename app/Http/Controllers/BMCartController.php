@@ -146,11 +146,30 @@ class BMCartController extends Controller
         $order->total = $request->total;
         $order->user_id = Auth::user()->sid;
         $result = $order->save();
+        
 
         if ($result){
             // dd($cartArray);
             $newOrder = Order_Detail::where('sid', $orderSID)->first();
             $orderID = $newOrder->sid;
+            $orderNr = '#' . str_pad($newOrder->id + 1, 8, "0", STR_PAD_LEFT);
+            $newOrder->order_nr = $orderNr;
+            $newOrder->save();
+            $paymentSuccessful = route('successful');
+            // dd($paymentSuccessful);
+            // $paymentSuccessful = route('successful', [
+            //     'firstname' => $first_name,
+            //     'order_nr' => $orderNr,
+            //     'total' => $total
+            // ]);
+            // $paymentSuccessful = route('successful', [$first_name, $orderNr, $total]);
+            $paymentCancelled = route('cancelled', [
+                'firstname' => $first_name,
+                'order_nr' => $orderNr,
+                'total' => $total
+            ]);
+            
+            // dd($paymentSuccessful);
             // Create order list records
             foreach ($cartArray as $cartItem){
                 $orderItem = new Order_Item();
@@ -165,6 +184,8 @@ class BMCartController extends Controller
             // dd($order_items);
         }
 
+        // $successful = urlencode(route('successful'));
+        // dd($successful);
 
 
         $data = array();
@@ -195,6 +216,6 @@ class BMCartController extends Controller
         // $signature = generateSignature( $data, $passPhrase );
         // dd($signature);
 
-        return view('shop_front.checkout', compact('cart', 'cartArray', 'priceTotalBeforeDiscountTax', 'subtotal', 'tax', 'total', 'discount', 'deliveryFee', 'deliveryAddress', 'order_items', 'first_name', 'last_name', 'email', 'phone', 'orderSID'));
+        return view('shop_front.checkout', compact('cart', 'cartArray', 'priceTotalBeforeDiscountTax', 'subtotal', 'tax', 'total', 'discount', 'deliveryFee', 'deliveryAddress', 'order_items', 'first_name', 'last_name', 'email', 'phone', 'orderSID', 'orderNr', 'paymentSuccessful', 'paymentCancelled'));
     }
 }

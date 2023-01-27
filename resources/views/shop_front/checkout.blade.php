@@ -140,8 +140,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label >Phone Number</label>
-                                                        <input disabled id="to_places" name="to_places" value="" class="form-control" placeholder="Enter a Phone Number: *">
-                                                        <input id="destination" type="hidden" name="destination">
+                                                        <input disabled id="phone" name="phone" class="form-control" value="{{$phone}}">
                                                     </div>
                                                 </div>
 
@@ -326,8 +325,8 @@
             {{-- Merchant Details --}}
             <input type="hidden" name="merchant_id" value="10028272">
             <input type="hidden" name="merchant_key" value="abonw8bat2nsd">
-            <input type="hidden" name="return_url" value="https://www.example.com/success">
-            <input type="hidden" name="cancel_url" value="https://www.example.com/cancel">
+            <input type="hidden" name="return_url" value="{{$paymentSuccessful}}">
+            <input type="hidden" name="cancel_url" value="{{$paymentCancelled}}">
             <input type="hidden" name="notify_url" value="https://www.example.com/notify">
 
             {{-- Customer Details --}}
@@ -337,9 +336,9 @@
             <input type="hidden" name="cell_number" value="{{$phone}}"> 
 
             {{-- Transaction Details --}}
-            <input type="hidden" name="m_payment_id" value="01AB">
+            <input type="hidden" name="m_payment_id" value="{{$orderNr}}">
             <input type="hidden" name="amount" value="{{$total}}">
-            <input type="hidden" name="item_name" value="{{$orderSID}}">
+            <input type="hidden" name="item_name" value="{{$orderNr}}">
             <input type="hidden" name="item_description" value="{{$orderSID}}">
             <input type="hidden" name="custom_int1" value="2">
             <input type="hidden" name="custom_str1" value="{{$deliveryFee}}">

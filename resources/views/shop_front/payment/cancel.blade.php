@@ -44,14 +44,14 @@
             <!-- Sign In Block -->
             <div class="block block-rounded block-transparent block-fx-pop w-100 mb-0 overflow-hidden bg-image" style="background-image: url({{asset('assets/admin/media/photos/photo20@2x.jpg')}});">
               <div class="row g-0">
-                <div class="col-md-6 order-md-1 bg-body-extra-light">
+                <div class="col-md-12 order-md-1 bg-body-extra-light">
                   <div class="block-content block-content-full px-lg-5 py-md-5 py-lg-6">
                     <!-- Header -->
                     <div class="mb-2 text-center">
                       <a class="link-fx fw-bold fs-1" href="index.html">
-                        <span style="color: brown">BeefMasters</span>
+                        <span style="color: brown">Hi {{Auth::user()->name}}</span>
                       </a>
-                      <p class="text-uppercase fw-bold fs-sm text-muted">Sign In</p>
+                      <p class="text-uppercase fw-bold fs-sm text-muted">You have cancelled your order.</p>
                     </div>
                     <!-- END Header -->
 
@@ -73,41 +73,33 @@
                       
                     </div>
 
-                    <form  action="{{route('login-user')}}" method="POST">
-                      @csrf
+                    {{-- <form  action="{{route('login-user')}}" method="POST">
+                      @csrf --}}
                       <div class="mb-4">
-                        <input required type="email" class="form-control form-control-alt" id="email" name="email" placeholder="Email">
+                        <label for="total">Cancelled Order Number</label>
+                        <input disabled type="text" class="form-control form-control-alt" id="order_nr" name="order_nr" value="{{$order_nr}}">
+                        <input disabled style="border:none;" type="text" class="form-control form-control-alt" id="order_nr" name="order_nr" value="">
                       </div>
                       <div class="mb-4">
-                        <input required type="password" class="form-control form-control-alt" id="password" name="password" placeholder="Password">
+                        <label for="total">Amount</label>
+                        <input disabled type="text" class="form-control form-control-alt" id="order_nr" name="order_nr" value="{{$total}}">
                       </div>
                       <div class="mb-4">
-                        <button type="submit" class="btn w-100 btn-hero btn-success">
-                          <i class="fa fa-fw fa-sign-in-alt opacity-50 me-1"></i> Log In
+                        <p>Please feel free to email us <span style="color: blue;">admin@beefmasters</span> or call/whatsapp on +27655446578 and let us know how we may better serve you</p>
+                      </div>
+                      <div class="mb-4">
+                        <a href="">
+                        <button class="btn w-100 btn-hero btn-success">
+                          
+                            <i class="fa fa-fw fa-sign-in-alt opacity-50 me-1"></i> Back To Shop
+                          
                         </button>
+                        </a>
                       </div>
-                    </form>
-                    <div class="mb-4">
-                      <button class="btn w-100 btn-hero btn-warning">
-                        <i class="fa fa-fw fa-sign-in-alt opacity-50 me-1"></i> <a href="{{route('register-user')}}">Register</a>
-                      </button>
-                    </div>
+                    {{-- </form> --}}
                     <!-- END Sign In Form -->
                   </div>
                 </div>
-                <div class="col-md-6 order-md-0 bg-primary-dark-op d-flex align-items-center">
-                  <div class="block-content block-content-full px-lg-5 py-md-5 py-lg-6">
-                    <div class="d-flex">
-                      <a class="flex-shrink-0 img-link me-3" href="javascript:void(0)">
-                        <img class="img-avatar img-avatar-thumb" src="{{asset('assets/admin/media/avatars/avatar12.jpg')}}" alt="">
-                      </a>
-                      <div class="flex-grow-1">
-                        <p class="text-white fw-semibold mb-1">
-                          Login to continue to with your order or register if you do not have an account
-                        </p>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

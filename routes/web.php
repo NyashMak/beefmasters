@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\PaymentDetailController;
 
 //BeefMaster Controllers
 use App\Http\Controllers\BMProductController;
@@ -39,6 +40,11 @@ Route::get('/view-cart', [BMCartController::class, 'index'])->name('view-cart');
 Route::post('/update-cart', [BMCartController::class, 'update'])->name('update-cart');
 Route::post('/checkout', [BMCartController::class, 'checkout'])->name('checkout')->middleware('isLoggedIn');
 
+// Route::get('/payment-successful/firstname/{firstname}/order_nr/{order_nr}/total/{total}', [PaymentDetailController::class, 'successful'])->name('successful');
+Route::get('/payment-successful', [PaymentDetailController::class, 'successful'])->name('successful');
+Route::get('/payment-cancelled', [PaymentDetailController::class, 'cancel'])->name('cancelled');
+// Route::get('/payment-successful/{firstname}/{order_nr}/{total}', [PaymentDetailController::class, 'successful'])->name('successful');
+// Route::get('/payment-cancelled', [PaymentDetailController::class, 'cancel'])->name('cancelled');
 
 
 
