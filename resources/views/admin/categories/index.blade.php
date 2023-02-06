@@ -1,5 +1,7 @@
 @extends('admin.layouts.app')
 @section('body')
+          <!-- Quick Overview -->
+          <div class="row items-push">
             @if(Session::has('success'))
             <div class="alert alert-success mx-auto">
                 {{Session::get('success')}}
@@ -14,9 +16,7 @@
                </ul>
             </div>
             @endif
-          <!-- Quick Overview -->
-          <div class="row items-push">
-            <div class="col-6 col-lg-3">
+            <div class="col-6 col-lg-6">
               <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="{{route('categories.create')}}">
                 <div class="block-content py-5">
                   <div class="fs-3 fw-semibold text-success mb-1">
@@ -28,7 +28,7 @@
                 </div>
               </a>
             </div>
-            <div class="col-6 col-lg-3">
+            {{-- <div class="col-6 col-lg-4">
               <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="javascript:void(0)">
                 <div class="block-content py-5">
                   <div class="fs-3 fw-semibold text-danger mb-1">63</div>
@@ -37,21 +37,11 @@
                   </p>
                 </div>
               </a>
-            </div>
-            <div class="col-6 col-lg-3">
+            </div> --}}
+            <div class="col-6 col-lg-6">
               <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="javascript:void(0)">
                 <div class="block-content py-5">
-                  <div class="fs-3 fw-semibold text-dark mb-1">690</div>
-                  <p class="fw-semibold fs-sm text-muted text-uppercase mb-0">
-                    New
-                  </p>
-                </div>
-              </a>
-            </div>
-            <div class="col-6 col-lg-3">
-              <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="javascript:void(0)">
-                <div class="block-content py-5">
-                  <div class="fs-3 fw-semibold text-dark mb-1">36.963</div>
+                  <div class="fs-3 fw-semibold text-dark mb-1">{{$categories->count()}}</div>
                   <p class="fw-semibold fs-sm text-muted text-uppercase mb-0">
                     All Categories
                   </p>
@@ -65,27 +55,6 @@
           <div class="block block-rounded">
             <div class="block-header block-header-default">
               <h3 class="block-title">All Categories</h3>
-              <div class="block-options">
-                <div class="dropdown">
-                  <button type="button" class="btn btn-alt-secondary" id="dropdown-ecom-filters" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Filters <i class="fa fa-angle-down ms-1"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-ecom-filters">
-                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                      New
-                      <span class="badge bg-success rounded-pill">260</span>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                      Out of Stock
-                      <span class="badge bg-danger rounded-pill">63</span>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                      All
-                      <span class="badge bg-black-50 rounded-pill">36k</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
             </div>
             <div class="block-content bg-body-dark">
               <!-- Search Form -->
@@ -105,7 +74,7 @@
                       <th class="text-center" style="width: 100px;">ID</th>
                       <th class="d-none d-sm-table-cell text-center">Added</th>
                       <th class="d-none d-md-table-cell">Category</th>
-                      <th class="d-none d-sm-table-cell text-end">Value</th>
+                      <th class="d-none d-sm-table-cell text-end">Description</th>
                       <th class="text-center">Actions</th>
                     </tr>
                   </thead>
@@ -124,7 +93,7 @@
                         </td>
                         <td class="text-end d-none d-sm-table-cell fs-sm">
                           {{-- might want to put sum of all products values under the same category --}}
-                          <strong>$18,00</strong>
+                          <strong>{{$category->description}}</strong>
                         </td>
                         <td class="text-center fs-sm">
                           <a class="btn btn-sm btn-alt-secondary" href="{{route('categories.edit',$category->id)}}">
@@ -136,31 +105,7 @@
                         </td>
                       </tr>
                       @endforeach
-                    @endif
-                    <tr>
-                      <td class="text-center fs-sm">
-                        <a class="fw-semibold" href="be_pages_ecom_product_edit.html">
-                          <strong>PID.036534</strong>
-                        </a>
-                      </td>
-                      <td class="d-none d-sm-table-cell text-center fs-sm">01/02/2019</td>
-                      <td class="d-none d-md-table-cell fs-sm">
-                        <a class="fw-semibold" href="be_pages_ecom_product_edit.html">Category #34</a>
-                      </td> 
-                      <td class="text-end d-none d-sm-table-cell fs-sm">
-                        <strong>$50,00</strong>
-                      </td>
-                      <td class="text-center fs-sm">
-                        <a class="btn btn-sm btn-alt-secondary" href="be_pages_ecom_product_edit.html">
-                          <i class="fa fa-fw fa-eye"></i>
-                        </a>
-                        <a class="btn btn-sm btn-alt-secondary" href="javascript:void(0)">
-                          <i class="fa fa-fw fa-times text-danger"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    
-                    
+                    @endif                    
                   </tbody>
                 </table>
               </div>

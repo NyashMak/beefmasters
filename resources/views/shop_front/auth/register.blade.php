@@ -7,7 +7,7 @@
     <title>BeefMasters</title>
 
     <meta name="description" content="BeefMasters">
-    <meta name="author" content="Wellprune Digital">
+    <meta name="author" content="Nyasha Makwavarara">
     <meta name="robots" content="noindex, nofollow">
 
     <!-- Open Graph Meta -->

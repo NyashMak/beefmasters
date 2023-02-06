@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <title>BeefMasters</title>
+    <title>BeefMasters Administrator</title>
 
     <meta name="description" content="BeefMasters">
     <meta name="author" content="Nyasha Makwavarara">
@@ -13,7 +13,7 @@
     <!-- Open Graph Meta -->
     <meta property="og:title" content="BeefMasters">
     <meta property="og:site_name" content="BeefMasters">
-    <meta property="og:description" content="Butchery, E-Commerce Administrator, BeefMasters">
+    <meta property="og:description" content="BeefMasters Butchery">
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
@@ -73,7 +73,7 @@
                       
                     </div>
 
-                    <form  action="{{route('login-user')}}" method="POST">
+                    <form  action="{{route('login-admin')}}" method="POST">
                       @csrf
                       <div class="mb-4">
                         <input required type="email" class="form-control form-control-alt" id="email" name="email" placeholder="Email">
@@ -87,11 +87,6 @@
                         </button>
                       </div>
                     </form>
-                    <div class="mb-4">
-                      <button class="btn w-100 btn-hero btn-warning">
-                        <i class="fa fa-fw fa-sign-in-alt opacity-50 me-1"></i> <a href="{{route('register-user')}}">Register</a>
-                      </button>
-                    </div>
                     <!-- END Sign In Form -->
                   </div>
                 </div>
@@ -103,7 +98,7 @@
                       </a>
                       <div class="flex-grow-1">
                         <p class="text-white fw-semibold mb-1">
-                          Login to continue to with your order or register if you do not have an account
+                          Welcome Back to BeefMasters Administrator Portal!
                         </p>
                       </div>
                     </div>

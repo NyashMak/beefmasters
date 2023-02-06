@@ -11,8 +11,8 @@
 		<meta name="mobile-web-app-capable" content="yes">
 	
 		<!-- Meta tags -->
-		<meta name="description" content="">
-		<meta name="author" content="">
+		<meta name="description" content="BeefMasters">
+		<meta name="author" content="Nyasha Makwavarara">
 		
 		<!-- google fonts -->
 		<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">

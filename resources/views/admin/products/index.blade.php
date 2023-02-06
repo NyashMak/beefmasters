@@ -31,7 +31,7 @@
             <div class="col-6 col-lg-3">
               <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="javascript:void(0)">
                 <div class="block-content py-5">
-                  <div class="fs-3 fw-semibold text-danger mb-1">63</div>
+                  <div class="fs-3 fw-semibold text-danger mb-1">0</div>
                   <p class="fw-semibold fs-sm text-danger text-uppercase mb-0">
                     Out of stock
                   </p>
@@ -41,7 +41,7 @@
             <div class="col-6 col-lg-3">
               <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="javascript:void(0)">
                 <div class="block-content py-5">
-                  <div class="fs-3 fw-semibold text-dark mb-1">690</div>
+                  <div class="fs-3 fw-semibold text-dark mb-1">{{$products->count()}}</div>
                   <p class="fw-semibold fs-sm text-muted text-uppercase mb-0">
                     New
                   </p>
@@ -51,7 +51,7 @@
             <div class="col-6 col-lg-3">
               <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="javascript:void(0)">
                 <div class="block-content py-5">
-                  <div class="fs-3 fw-semibold text-dark mb-1">36.963</div>
+                  <div class="fs-3 fw-semibold text-dark mb-1">{{$products->count()}}</div>
                   <p class="fw-semibold fs-sm text-muted text-uppercase mb-0">
                     All Products
                   </p>
@@ -81,7 +81,7 @@
                     </a>
                     <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
                       All
-                      <span class="badge bg-black-50 rounded-pill">36k</span>
+                      <span class="badge bg-black-50 rounded-pill">{{$products->count()}}</span>
                     </a>
                   </div>
                 </div>
@@ -103,7 +103,7 @@
                   <thead>
                     <tr>
                       <th class="text-center" style="width: 100px;">ID</th>
-                      <th class="d-none d-sm-table-cell text-center">Shop</th>
+                      <th class="d-none d-sm-table-cell text-center">Category</th>
                       <th class="d-none d-sm-table-cell text-center">Added</th>
                       <th class="d-none d-md-table-cell">Product</th>
                       <th>Status</th>
@@ -117,12 +117,10 @@
                     <tr>
                       <td class="text-center fs-sm">
                         <a class="fw-semibold" href="be_pages_ecom_product_edit.html">
-                          <strong>{{$product->id}}</strong>
+                          <strong>PID#{{$product->id}}</strong>
                         </a>
-                      </td>
-                      
-                      <td class="d-none d-sm-table-cell text-center fs-sm">{{$product->shop_id}}</td>
-
+                      </td>                      
+                      <td class="d-none d-sm-table-cell text-center fs-sm">{{$product->category_id}}</td>
                       <td class="d-none d-sm-table-cell text-center fs-sm">{{$product->created_at}}</td>
                       <td class="d-none d-md-table-cell fs-sm">
                         <a class="fw-semibold" href="be_pages_ecom_product_edit.html">{{$product->name}}</a>
@@ -131,7 +129,7 @@
                         <span class="badge bg-success">Available</span>
                       </td>
                       <td class="text-end d-none d-sm-table-cell fs-sm">
-                        <strong>{{$product->price}}</strong>
+                        <strong>R{{$product->price}}</strong>
                       </td>
                       <td class="text-center fs-sm">
                         <a class="btn btn-sm btn-alt-secondary" href="{{route('products.edit', $product->id)}}">
@@ -150,6 +148,7 @@
                           <strong>PID.036535</strong>
                         </a>
                       </td>
+                      <td class="d-none d-sm-table-cell text-center fs-sm">Category</td>
                       <td class="d-none d-sm-table-cell text-center fs-sm">17/05/2019</td>
                       <td class="d-none d-md-table-cell fs-sm">
                         <a class="fw-semibold" href="be_pages_ecom_product_edit.html">Product #35</a>
@@ -158,7 +157,7 @@
                         <span class="badge bg-success">Available</span>
                       </td>
                       <td class="text-end d-none d-sm-table-cell fs-sm">
-                        <strong>$18,00</strong>
+                        <strong>R18,00</strong>
                       </td>
                       <td class="text-center fs-sm">
                         <a class="btn btn-sm btn-alt-secondary" href="{{route('products.edit',1)}}">
@@ -175,6 +174,7 @@
                           <strong>PID.036534</strong>
                         </a>
                       </td>
+                      <td class="d-none d-sm-table-cell text-center fs-sm">Category</td>
                       <td class="d-none d-sm-table-cell text-center fs-sm">01/02/2019</td>
                       <td class="d-none d-md-table-cell fs-sm">
                         <a class="fw-semibold" href="be_pages_ecom_product_edit.html">Product #34</a>
@@ -183,7 +183,7 @@
                         <span class="badge bg-danger">Out of Stock</span>
                       </td>
                       <td class="text-end d-none d-sm-table-cell fs-sm">
-                        <strong>$50,00</strong>
+                        <strong>R50,00</strong>
                       </td>
                       <td class="text-center fs-sm">
                         <a class="btn btn-sm btn-alt-secondary" href="be_pages_ecom_product_edit.html">

@@ -21,7 +21,11 @@ return new class extends Migration
             $table->float('weight')->nullable();
             $table->float('discount')->nullable();
             $table->float('tax')->nullable();
-            $table->string('order_id');
+            $table->string('order_id')->nullable();
+
+            $table->foreign('order_id')->references('sid')->on('order__details')->onDelete('cascade');
+
+            
         });
     }
 

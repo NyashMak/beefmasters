@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Http;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\User;
 use App\Models\Inventory;
 use App\Models\Discount;
 use App\Models\Order_Item;
@@ -25,7 +26,10 @@ class OrderDetailController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order_Detail::all();
+        $customers = User::all();
+        $order_items = Order_Item::all();
+        return view('admin.orders.index', compact('orders', 'customers', 'order_items'));
     }
 
     /**
@@ -55,9 +59,21 @@ class OrderDetailController extends Controller
      * @param  \App\Models\Order_Detail  $order_Detail
      * @return \Illuminate\Http\Response
      */
-    public function show(Order_Detail $order_Detail)
+    public function show(Order_Detail $order_Detail, $id)
     {
-        //
+        // dd($id);
+        $order = Order_Detail::where('sid', $id)->first();
+        // dd($order);
+       
+        if(is_object($order)){
+            $products = Product::all();
+            $customer = User::where('sid', $order->user_id)->first();
+            $order_items = Order_Item::where('order_id', $order->sid)->get();
+            return view('admin.orders.show', compact('order', 'order_items', 'customer', 'products'));
+        }
+        else{
+            redirect()->back()->with('error', 'Something went wrong with this order');
+        }
     }
 
     /**
@@ -78,9 +94,14 @@ class OrderDetailController extends Controller
      * @param  \App\Models\Order_Detail  $order_Detail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order_Detail $order_Detail)
+    public function update(Request $request, Order_Detail $order_Detail, $order_id)
     {
-        //
+        // dd($request);
+        $order = Order_Detail::where('sid', $order_id)->first();
+        $order->status = $request->status;
+        $order->save();
+        
+        return redirect()->back()->with('success', 'Order Status updated successfully');
     }
 
     /**

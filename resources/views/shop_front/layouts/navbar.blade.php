@@ -114,13 +114,13 @@
 													@endif
 													<div class="cart-bottom">														
 														<div class="cartsubtotal">
-															@if($subtotal != "")
+															@isset($subtotal)
 															<p>Total: <b class="float-right">R {{$subtotal}}</b></p>
 															@else
 															<p>Total: <b class="float-right">R 0.00</b></p>
 															@endif
 															<div class="cart-action">
-														</div>
+															</div>
 															<a href="{{route('view-cart')}}" class="lab-btn"><span>View Cart</span></a>
 															<a href="#" class="lab-btn"><span>Check Out</span></a>
 														</div>

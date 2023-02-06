@@ -47,23 +47,42 @@ class CategoryController extends Controller
             'description' => 'required',
             'shop_id' => 'required'
         ]);
-        // request()->request->add(['total_cost_per_employee'=>$cost_per_employee]);
+
+        //Check If Shop Exists
+        $shop = Shop::where('id', $request->shop_id)->first();
+        if (!$shop){
+            if($request->shop_id == 1){
+                $shop = new Shop();
+                $shop->sid = Str::uuid()->toString();
+                $shop->name = 'Butchery';
+                $result = $shop->save();
+            }
+            elseif ($request->shop_id == 2){
+                $shop = new Shop();
+                $shop->sid = Str::uuid()->toString();
+                $shop->name = 'Farm';
+                $shop->save();
+                $result = $shop->save();
+            }
+        }
+
+        //Check if Category Already Exists
+        $category = Category::where('name', $request->name)->first();
+        if ($category){
+            return redirect()->back()->with('error', $request->name.' category already exists');
+        }
+
+        //Create a new category
         request()->request->add(['sid'=>Str::uuid()->toString()]);
         $sid = $request->sid;
         $name = $request->name;
         $input = $request->all();
         Category::create($input);
 
-        // dd('Check if created');
+        //Check if Category has been created
         if(!is_object(Category::where('sid', $sid)->first())){
-            dd('failed');
             return view('admin.categories.index');  
-            // return redirect()->route('categories.index')->with('success', $name.' category created successfully');
-        } else {
-            
-            // return view('admin.categories.index')->with('error', $name.' category was not created'); 
-            // return view('admin.categories.index');   
-
+        } else {          
             return redirect()->route('categories.index')->with('success', $name.' category created successfully');
         }
         

@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 use App\Models\User;
+use App\Models\Order_Detail;
+use App\Models\Order_Item;
 use App\Models\User_Address;
 use App\Models\User_Payment;
 use App\Models\Product;
@@ -37,6 +39,50 @@ class UserController extends Controller
         $tax = Cart::tax($decimals, $decimalSeparator, $thousandSeparator);
         $total = Cart::total($decimals, $decimalSeparator, $thousandSeparator);
         return view('shop_front.auth.login', compact('cart', 'subtotal', 'total'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function customers ()
+    {
+        $customers = User::where('is_customer',1)->get();
+
+        return view('admin.customers.index', compact('customers'));
+
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showCustomer($sid){
+        // dd($sid);
+        //Get User Information
+        $customer = User::where('sid', $sid)->first();
+
+        //Get User Orders
+        $orders = Order_Detail::where('user_id', $customer->sid)->get();
+        
+
+        foreach($orders as $order){
+            $products[$order->sid] = Order_Item::where('order_id', $order->sid)->get();
+            $itemsCount[$order->sid] = $products[$order->sid]->count();
+            // foreach ($products as $product) {
+
+            // }
+        }
+        // dd($itemsCount);
+
+        // dd($orders);
+        // Get User Order's Items
+        // $order_items = $orders->orderItems->count();
+        // dd($order_items);
+
+        return view('admin.customers.show', compact('customer', 'orders','itemsCount','products'));
     }
 
     /**

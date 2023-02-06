@@ -4,41 +4,7 @@
           <!-- Quick Overview + Actions -->
           <div class="block block-rounded">
             <div class="block-header block-header-default">
-              <h3 class="block-title">Add New Product</h3>
-            </div>
-          </div>
-          <div class="row items-push">
-            <div class="col-6 col-lg-4">
-              <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="be_pages_ecom_orders.html">
-                <div class="block-content py-5">
-                  <div class="fs-3 fw-semibold mb-1">250</div>
-                  <p class="fw-semibold fs-sm text-muted text-uppercase mb-0">
-                    Pending
-                  </p>
-                </div>
-              </a>
-            </div>
-            <div class="col-6 col-lg-4">
-              <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="javascript:void(0)">
-                <div class="block-content py-5">
-                  <div class="fs-3 fw-semibold mb-1">29</div>
-                  <p class="fw-semibold fs-sm text-muted text-uppercase mb-0">
-                    Available
-                  </p>
-                </div>
-              </a>
-            </div>
-            <div class="col-lg-4">
-              <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="be_pages_ecom_product_edit.html">
-                <div class="block-content py-5">
-                  <div class="fs-3 text-danger mb-1">
-                    <i class="fa fa-times"></i>
-                  </div>
-                  <p class="fw-semibold fs-sm text-danger text-uppercase mb-0">
-                    Remove Product
-                  </p>
-                </div>
-              </a>
+              <h3 class="block-title">Create New Product</h3>
             </div>
           </div>
           <!-- END Quick Overview + Actions -->

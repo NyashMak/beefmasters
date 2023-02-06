@@ -48,6 +48,25 @@
             <div class="block-header block-header-default">
               <h3 class="block-title">Category Info</h3>
             </div>
+            @if(Session::has('success'))
+            <div class="alert alert-success mx-auto">
+                {{Session::get('success')}}
+            </div>
+            @endif
+            @if(Session::has('error'))
+            <div class="alert alert-danger mx-auto">
+                {{Session::get('error')}}
+            </div>
+            @endif
+            @if ($errors->any())
+            <div class="alert alert-danger mx-auto">
+                <ul>
+               @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                 @endforeach
+               </ul>
+            </div>
+            @endif
             <div class="block-content">
               <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-8">
@@ -66,12 +85,13 @@
                     <div class="mb-4">
                       <!-- Select2 (.js-select2 class is initialized in Helpers.jqSelect2()) -->
                       <!-- For more info and examples you can check out https://github.com/select2/select2 -->
-                      <label class="form-label" for="shop_id">Shop</label>
+                      {{-- <label class="form-label" for="shop_id">Shop</label>
                       <select class="js-select2 form-select" id="dm-ecom-product-category" name="shop_id" style="width: 100%;" data-placeholder="Select Shop..">
-                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                        <option value="1" selected>Butchery</option>
+                        <option selected disabled value="">-- Click To Select Shop --</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                        <option value="1">Butchery</option>
                         <option value="2">Farm</option>
-                      </select>
+                      </select> --}}
+                      <input hidden type="number" name="shop_id" value="1">
                     </div>
                     <div class="mb-4">
                       <button type="submit" class="btn btn-alt-primary">Create</button>

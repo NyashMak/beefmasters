@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+// use App\Models\Order_Detail;
+use App\Models\User;
 
 class Order_Item extends Model
 {
@@ -21,15 +23,8 @@ class Order_Item extends Model
         
     ];
 
-    public function shop(){
-        return $this->belongsTo(Shop::class);
+    public function orderDetails(){
+        return $this->belongsTo(Order_Detail::class, 'order_id');
     }
 
-    public function order_item(){
-        return $this->belongsTo(Order_Item::class);
-    }
-
-    public function product(){
-        return $this->hasOne(Product::class);
-    }
 }

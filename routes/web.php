@@ -3,16 +3,18 @@
 use Illuminate\Support\Facades\Route;
 
 //Admin Controllers
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\DiscountController;
-use App\Http\Controllers\PaymentDetailController;
 
 //BeefMaster Controllers
 use App\Http\Controllers\BMProductController;
-use App\Http\Controllers\BMHomeController;
 use App\Http\Controllers\BMCartController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\BMHomeController;
+use App\Http\Controllers\OrderDetailController;
+use App\Http\Controllers\PaymentDetailController;
 
 
 
@@ -47,8 +49,6 @@ Route::get('/payment-cancelled', [PaymentDetailController::class, 'cancel'])->na
 // Route::get('/payment-cancelled', [PaymentDetailController::class, 'cancel'])->name('cancelled');
 
 
-
-
 Route::get('/show', function () {
     return view('shop_front.show');
 })->name('show');
@@ -67,11 +67,23 @@ Route::get('/receipt', function () {
 
 
 
-// Admin Routing
-//Must prefix the routes with Admin when creating the middleware
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-})->name('dashboard');
+// ADMIN Routing
+Route::get('/admin/login', [AdminUserController::class, 'login'])->name('login-page');
+Route::post('admin-login/login-user', [AdminUserController::class, 'checkUser'])->name('login-admin');
+
+//Add Middleware
+Route::middleware('isAdminUser')->prefix('/admin')->group(function () { 
+
+Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+
+// Users Routing
+Route::resource('users', AdminUserController::class);
+Route::get('/admin-logout', [AdminUserController::class, 'logout'])->name('logout-admin');
+
+// Orders Routing
+Route::resource('orders', OrderDetailController::class);
 
 // Categories Routing
 Route:: resource('categories', CategoryController::class);
@@ -84,5 +96,8 @@ Route::post('product/delete', [ProductController::class, 'delete'])->name('delet
 // Discounts Routing
 Route::resource('discounts', DiscountController::class);
 
-// BeefMasters Routing
-// Must prefix the routes with BeefMasters when creating the middleware
+// Customers Routing
+Route::get('customers', [UserController::class, 'customers'])->name('list-customers');
+Route::get('customer/{id}', [UserController::class, 'showCustomer'])->name('show-customer');
+
+});

@@ -54,7 +54,7 @@
 					</a>
 				  </li>
 				  <li class="nav-main-item">
-					<a class="nav-main-link" href="be_pages_ecom_orders.html">
+					<a class="nav-main-link" href="{{route('orders.index')}}">
 					  <span class="nav-main-link-name">Orders</span>
 					  <span class="nav-main-link-badge badge rounded-pill bg-primary">8</span>
 					</a>
@@ -85,8 +85,13 @@
 					</a>
 				  </li>
 				  <li class="nav-main-item">
-					<a class="nav-main-link" href="">
+					<a class="nav-main-link" href="{{route('list-customers')}}">
 					  <span class="nav-main-link-name">Customers</span>
+					</a>
+				  </li>
+				  <li class="nav-main-item">
+					<a class="nav-main-link" href="{{route('users.index')}}">
+					  <span class="nav-main-link-name">Users</span>
 					</a>
 				  </li>
 

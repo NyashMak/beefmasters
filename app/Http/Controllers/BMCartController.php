@@ -102,16 +102,20 @@ class BMCartController extends Controller
         $total = $request->total;
         if ($deliveryFee == 'Free Delivery'){
             $deliveryFee = 'Free Delivery';
+            $status = 'For Delivery';
         }
         if ($deliveryFee == 'Collect in-store'){
             $deliveryFee = null;
+            $status = 'For Collection';
         }
         if ($deliveryFee == null){
             $deliveryAddress = 'Collect-in-store';
             $deliveryFee = 0;
+            $status = 'For Collection';
         }
-        if (!is_string($deliveryFee)){
+        if ($deliveryFee != null && $deliveryFee != 'Free Delivery' && $deliveryFee != 'Collect in-store' && $deliveryFee != ''){
             $deliveryFee = $deliveryFee + 0;
+            $status = 'For Delivery';
         }
 
         //Get Logged In User Details
@@ -145,6 +149,7 @@ class BMCartController extends Controller
         $order->delivery_address = $deliveryAddress;
         $order->total = $request->total;
         $order->user_id = Auth::user()->sid;
+        $order->status = $status;
         $result = $order->save();
         
 
@@ -163,11 +168,7 @@ class BMCartController extends Controller
             //     'total' => $total
             // ]);
             // $paymentSuccessful = route('successful', [$first_name, $orderNr, $total]);
-            $paymentCancelled = route('cancelled', [
-                'firstname' => $first_name,
-                'order_nr' => $orderNr,
-                'total' => $total
-            ]);
+            $paymentCancelled = route('cancelled');
             
             // dd($paymentSuccessful);
             // Create order list records

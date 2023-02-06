@@ -6,90 +6,30 @@
 
     <title>Beef Masters Administration</title>
 
-    <meta name="description" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-    <meta name="author" content="pixelcave">
+    <meta name="description" content="BeefMasters">
+    <meta name="author" content="Nyasha Makwavarara">
     <meta name="robots" content="noindex, nofollow">
 
     <!-- Open Graph Meta -->
-    <meta property="og:title" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework">
-    <meta property="og:site_name" content="Dashmix">
-    <meta property="og:description" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+    <meta property="og:title" content="BeefMasters">
+    <meta property="og:site_name" content="BeefMasters Administrator">
+    <meta property="og:description" content="Butchery, E-Commerce Administrator, BeefMasters">
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
 
     <!-- Icons -->
-    <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
     <link rel="shortcut icon" href="{{asset('assets/admin/media/favicons/favicon.png')}}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{asset('assets/admin/media/favicons/favicon-192x192.png')}}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets/admin/media/favicons/apple-touch-icon-180x180.png')}}">
     <!-- END Icons -->
 
     <!-- Stylesheets -->
-    <!-- Dashmix framework -->
     <link rel="stylesheet" id="css-main" href="{{asset('assets/admin/css/dashmix.min.css')}}">
-
-    <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <!-- <link rel="stylesheet" id="css-theme" href="assets/butcher/css/themes/xwork.min.css"> -->
     <!-- END Stylesheets -->
   </head>
   <body>
-    <!-- Page Container -->
-    <!--
-      Available classes for #page-container:
-    
-      GENERIC
-    
-        'remember-theme'                            Remembers active color theme and dark mode between pages using localStorage when set through
-                                                    - Theme helper buttons [data-toggle="theme"],
-                                                    - Layout helper buttons [data-toggle="layout" data-action="dark_mode_[on/off/toggle]"]
-                                                    - ..and/or Dashmix.layout('dark_mode_[on/off/toggle]')
-    
-      SIDEBAR & SIDE OVERLAY
-    
-        'sidebar-r'                                 Right Sidebar and left Side Overlay (default is left Sidebar and right Side Overlay)
-        'sidebar-mini'                              Mini hoverable Sidebar (screen width > 991px)
-        'sidebar-o'                                 Visible Sidebar by default (screen width > 991px)
-        'sidebar-o-xs'                              Visible Sidebar by default (screen width < 992px)
-        'sidebar-dark'                              Dark themed sidebar
-    
-        'side-overlay-hover'                        Hoverable Side Overlay (screen width > 991px)
-        'side-overlay-o'                            Visible Side Overlay by default
-    
-        'enable-page-overlay'                       Enables a visible clickable Page Overlay (closes Side Overlay on click) when Side Overlay opens
-    
-        'side-scroll'                               Enables custom scrolling on Sidebar and Side Overlay instead of native scrolling (screen width > 991px)
-    
-      HEADER
-    
-        ''                                          Static Header if no class is added
-        'page-header-fixed'                         Fixed Header
-    
-    
-      FOOTER
-    
-        ''                                          Static Footer if no class is added
-        'page-footer-fixed'                         Fixed Footer (please have in mind that the footer has a specific height when is fixed)
-    
-      HEADER STYLE
-    
-        ''                                          Classic Header style if no class is added
-        'page-header-dark'                          Dark themed Header
-        'page-header-glass'                         Light themed Header with transparency by default
-                                                    (absolute position, perfect for light images underneath - solid light background on scroll if the Header is also set as fixed)
-        'page-header-glass page-header-dark'         Dark themed Header with transparency by default
-                                                    (absolute position, perfect for dark images underneath - solid dark background on scroll if the Header is also set as fixed)
-    
-      MAIN CONTENT LAYOUT
-    
-        ''                                          Full width Main Content if no class is added
-        'main-content-boxed'                        Full width Main Content with a specific maximum width (screen width > 1200px)
-        'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
-        
-      DARK MODE
-    
-        'sidebar-dark page-header-dark dark-mode'   Enable dark mode (light sidebar/header is not supported with dark mode)
-    -->
     <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow">
       <!-- Side Overlay-->
       <aside id="side-overlay">
@@ -105,8 +45,16 @@
 
               <!-- User Info -->
               <div class="ms-2">
-                <a class="text-white fw-semibold" href="be_pages_generic_profile.html">George Taylor</a>
-                <div class="text-white-75 fs-sm">Full Stack Developer</div>
+                <a class="text-white fw-semibold" href="be_pages_generic_profile.html">{{Auth::user()->name}}</a>
+                @if(Auth::user()->role == 'super_admin')
+                <div class="text-white-75 fs-sm">Super Admin</div>
+                @endif
+                @if(Auth::user()->role == 'admin')
+                <div class="text-white-75 fs-sm">Administrator</div>
+                @endif
+                @if(Auth::user()->role == 'sales')
+                <div class="text-white-75 fs-sm">Sales</div>
+                @endif
               </div>
               <!-- END User Info -->
 
@@ -131,11 +79,7 @@
                   <i class="fa fa-fw fa-cog"></i>
                 </button>
               </li>
-              <li class="nav-item" role="presentation">
-                <button class="nav-link" id="so-people-tab" data-bs-toggle="tab" data-bs-target="#so-people" role="tab" aria-controls="so-people" aria-selected="false">
-                  <i class="far fa-fw fa-user-circle"></i>
-                </button>
-              </li>
+              
               <li class="nav-item" role="presentation">
                 <button class="nav-link" id="so-profile-tab" data-bs-toggle="tab" data-bs-target="#so-profile" role="tab" aria-controls="so-profile" aria-selected="false">
                   <i class="far fa-fw fa-edit"></i>
@@ -146,64 +90,6 @@
               <!-- Settings Tab -->
               <div class="tab-pane pull-x fade fade-up show active" id="so-settings" role="tabpanel" aria-labelledby="so-settings-tab" tabindex="0">
                 <div class="block mb-0">
-                  <!-- Color Themes -->
-                  <!-- Toggle Themes functionality initialized in Template._uiHandleTheme() -->
-                  <div class="block-content block-content-sm block-content-full bg-body">
-                    <span class="text-uppercase fs-sm fw-bold">Color Themes</span>
-                  </div>
-                  <div class="block-content block-content-full">
-                    <div class="row g-sm text-center">
-                      <div class="col-4 mb-1">
-                        <a class="d-block py-3 text-white fs-sm fw-semibold bg-default" data-toggle="theme" data-theme="default" href="#">
-                          Default
-                        </a>
-                      </div>
-                      <div class="col-4 mb-1">
-                        <a class="d-block py-3 text-white fs-sm fw-semibold bg-xwork" data-toggle="theme" data-theme="assets/butcher/css/themes/xwork.min.css" href="#">
-                          xWork
-                        </a>
-                      </div>
-                      <div class="col-4 mb-1">
-                        <a class="d-block py-3 text-white fs-sm fw-semibold bg-xmodern" data-toggle="theme" data-theme="assets/butcher/css/themes/xmodern.min.css" href="#">
-                          xModern
-                        </a>
-                      </div>
-                      <div class="col-4 mb-1">
-                        <a class="d-block py-3 text-white fs-sm fw-semibold bg-xeco" data-toggle="theme" data-theme="assets/butcher/css/themes/xeco.min.css" href="#">
-                          xEco
-                        </a>
-                      </div>
-                      <div class="col-4 mb-1">
-                        <a class="d-block py-3 text-white fs-sm fw-semibold bg-xsmooth" data-toggle="theme" data-theme="assets/butcher/css/themes/xsmooth.min.css" href="#">
-                          xSmooth
-                        </a>
-                      </div>
-                      <div class="col-4 mb-1">
-                        <a class="d-block py-3 text-white fs-sm fw-semibold bg-xinspire" data-toggle="theme" data-theme="assets/butcher/css/themes/xinspire.min.css" href="#">
-                          xInspire
-                        </a>
-                      </div>
-                      <div class="col-4 mb-1">
-                        <a class="d-block py-3 text-white fs-sm fw-semibold bg-xdream" data-toggle="theme" data-theme="assets/butcher/css/themes/xdream.min.css" href="#">
-                          xDream
-                        </a>
-                      </div>
-                      <div class="col-4 mb-1">
-                        <a class="d-block py-3 text-white fs-sm fw-semibold bg-xpro" data-toggle="theme" data-theme="assets/butcher/css/themes/xpro.min.css" href="#">
-                          xPro
-                        </a>
-                      </div>
-                      <div class="col-4 mb-1">
-                        <a class="d-block py-3 text-white fs-sm fw-semibold bg-xplay" data-toggle="theme" data-theme="assets/butcher/css/themes/xplay.min.css" href="#">
-                          xPlay
-                        </a>
-                      </div>
-                      <div class="col-12">
-                        <a class="d-block py-3 bg-body-dark fw-semibold text-dark" href="be_ui_color_themes.html">All Color Themes</a>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- END Color Themes -->
 
                   <!-- Sidebar -->
                   <div class="block-content block-content-sm block-content-full bg-body">
@@ -261,195 +147,15 @@
                     </div>
                   </div>
                   <!-- END Content -->
-
-                  <!-- Layout API -->
-                  <div class="block-content block-content-full border-top">
-                    <a class="btn w-100 btn-alt-primary" href="be_layout_api.html">
-                      <i class="fa fa-fw fa-flask me-1"></i> Layout API
-                    </a>
-                  </div>
-                  <!-- END Layout API -->
                 </div>
               </div>
               <!-- END Settings Tab -->
 
-              <!-- People -->
-              <div class="tab-pane pull-x fade fade-up" id="so-people" role="tabpanel" aria-labelledby="so-people-tab" tabindex="0">
-                <div class="block mb-0">
-                  <!-- Online -->
-                  <div class="block-content block-content-sm block-content-full bg-body">
-                    <span class="text-uppercase fs-sm fw-bold">Online</span>
-                  </div>
-                  <div class="block-content">
-                    <ul class="nav-items">
-                      <li>
-                        <a class="d-flex py-2" href="be_pages_generic_profile.html">
-                          <div class="flex-shrink-0 mx-3 overlay-container">
-                            <img class="img-avatar img-avatar48" src="assets/butcher/media/avatars/avatar8.jpg" alt="">
-                            <span class="overlay-item item item-tiny item-circle border border-2 border-white bg-success"></span>
-                          </div>
-                          <div class="flex-grow-1">
-                            <div class="fw-semibold">Susan Day</div>
-                            <div class="fs-sm text-muted">Photographer</div>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="d-flex py-2" href="be_pages_generic_profile.html">
-                          <div class="flex-shrink-0 mx-3 overlay-container">
-                            <img class="img-avatar img-avatar48" src="assets/butcher/media/avatars/avatar11.jpg" alt="">
-                            <span class="overlay-item item item-tiny item-circle border border-2 border-white bg-success"></span>
-                          </div>
-                          <div class="flex-grow-1">
-                            <div class="fw-semibold">Adam McCoy</div>
-                            <div class="fw-normal fs-sm text-muted">Web Designer</div>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="d-flex py-2" href="be_pages_generic_profile.html">
-                          <div class="flex-shrink-0 mx-3 overlay-container">
-                            <img class="img-avatar img-avatar48" src="assets/butcher/media/avatars/avatar5.jpg" alt="">
-                            <span class="overlay-item item item-tiny item-circle border border-2 border-white bg-success"></span>
-                          </div>
-                          <div class="flex-grow-1">
-                            <div class="fw-semibold">Carol Ray</div>
-                            <div class="fw-normal fs-sm text-muted">Web Developer</div>
-                          </div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <!-- Online -->
-
-                  <!-- Busy -->
-                  <div class="block-content block-content-sm block-content-full bg-body">
-                    <span class="text-uppercase fs-sm fw-bold">Busy</span>
-                  </div>
-                  <div class="block-content">
-                    <ul class="nav-items">
-                      <li>
-                        <a class="d-flex py-2" href="be_pages_generic_profile.html">
-                          <div class="flex-shrink-0 mx-3 overlay-container">
-                            <img class="img-avatar img-avatar48" src="assets/butcher/media/avatars/avatar5.jpg" alt="">
-                            <span class="overlay-item item item-tiny item-circle border border-2 border-white bg-danger"></span>
-                          </div>
-                          <div class="flex-grow-1">
-                            <div class="fw-semibold">Andrea Gardner</div>
-                            <div class="fw-normal fs-sm text-muted">UI Designer</div>
-                          </div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <!-- END Busy -->
-
-                  <!-- Away -->
-                  <div class="block-content block-content-sm block-content-full bg-body">
-                    <span class="text-uppercase fs-sm fw-bold">Away</span>
-                  </div>
-                  <div class="block-content">
-                    <ul class="nav-items">
-                      <li>
-                        <a class="d-flex py-2" href="be_pages_generic_profile.html">
-                          <div class="flex-shrink-0 mx-3 overlay-container">
-                            <img class="img-avatar img-avatar48" src="assets/butcher/media/avatars/avatar16.jpg" alt="">
-                            <span class="overlay-item item item-tiny item-circle border border-2 border-white bg-warning"></span>
-                          </div>
-                          <div class="flex-grow-1">
-                            <div class="fw-semibold">Brian Stevens</div>
-                            <div class="fw-normal fs-sm text-muted">Copywriter</div>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="d-flex py-2" href="be_pages_generic_profile.html">
-                          <div class="flex-shrink-0 mx-3 overlay-container">
-                            <img class="img-avatar img-avatar48" src="assets/butcher/media/avatars/avatar7.jpg" alt="">
-                            <span class="overlay-item item item-tiny item-circle border border-2 border-white bg-warning"></span>
-                          </div>
-                          <div class="flex-grow-1">
-                            <div class="fw-semibold">Carol White</div>
-                            <div class="fw-normal fs-sm text-muted">Writer</div>
-                          </div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <!-- END Away -->
-
-                  <!-- Offline -->
-                  <div class="block-content block-content-sm block-content-full bg-body">
-                    <span class="text-uppercase fs-sm fw-bold">Offline</span>
-                  </div>
-                  <div class="block-content">
-                    <ul class="nav-items">
-                      <li>
-                        <a class="d-flex py-2" href="be_pages_generic_profile.html">
-                          <div class="flex-shrink-0 mx-3 overlay-container">
-                            <img class="img-avatar img-avatar48" src="assets/butcher/media/avatars/avatar10.jpg" alt="">
-                            <span class="overlay-item item item-tiny item-circle border border-2 border-white bg-muted"></span>
-                          </div>
-                          <div class="flex-grow-1">
-                            <div class="fw-semibold">David Fuller</div>
-                            <div class="fw-normal fs-sm text-muted">Teacher</div>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="d-flex py-2" href="be_pages_generic_profile.html">
-                          <div class="flex-shrink-0 mx-3 overlay-container">
-                            <img class="img-avatar img-avatar48" src="assets/butcher/media/avatars/avatar2.jpg" alt="">
-                            <span class="overlay-item item item-tiny item-circle border border-2 border-white bg-muted"></span>
-                          </div>
-                          <div class="flex-grow-1">
-                            <div class="fw-semibold">Sara Fields</div>
-                            <div class="fw-normal fs-sm text-muted">Photographer</div>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="d-flex py-2" href="be_pages_generic_profile.html">
-                          <div class="flex-shrink-0 mx-3 overlay-container">
-                            <img class="img-avatar img-avatar48" src="assets/butcher/media/avatars/avatar4.jpg" alt="">
-                            <span class="overlay-item item item-tiny item-circle border border-2 border-white bg-muted"></span>
-                          </div>
-                          <div class="flex-grow-1">
-                            <div class="fw-semibold">Laura Carr</div>
-                            <div class="fw-normal fs-sm text-muted">Front-end Developer</div>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="d-flex py-2" href="be_pages_generic_profile.html">
-                          <div class="flex-shrink-0 mx-3 overlay-container">
-                            <img class="img-avatar img-avatar48" src="assets/butcher/media/avatars/avatar16.jpg" alt="">
-                            <span class="overlay-item item item-tiny item-circle border border-2 border-white bg-muted"></span>
-                          </div>
-                          <div class="flex-grow-1">
-                            <div class="fw-semibold">Ryan Flores</div>
-                            <div class="fw-normal fs-sm text-muted">UX Specialist</div>
-                          </div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <!-- END Offline -->
-
-                  <!-- Add People -->
-                  <div class="block-content block-content-full border-top">
-                    <a class="btn w-100 btn-alt-primary" href="javascript:void(0)">
-                      <i class="fa fa-fw fa-plus me-1 opacity-50"></i> Add People
-                    </a>
-                  </div>
-                  <!-- END Add People -->
-                </div>
-              </div>
-              <!-- END People -->
-
               <!-- Profile -->
               <div class="tab-pane pull-x fade fade-up" id="so-profile" role="tabpanel" aria-labelledby="so-profile-tab" tabindex="0">
-                <form action="be_pages_dashboard.html" method="POST" onsubmit="return false;">
+                <form action="{{route('users.update', [Auth::user()->sid])}}" method="POST">
+                  @csrf
+                  @method('PUT')
                   <div class="block mb-0">
                     <!-- Personal -->
                     <div class="block-content block-content-sm block-content-full bg-body">
@@ -457,16 +163,16 @@
                     </div>
                     <div class="block-content block-content-full">
                       <div class="mb-4">
-                        <label class="form-label">Username</label>
-                        <input type="text" readonly class="form-control" id="so-profile-username-static" value="Admin">
+                        <label class="form-label" for="so-profile-name">Username</label>
+                        <input type="text" class="form-control" id="so-profile-name" name="name" value="{{Auth::user()->name}}">
                       </div>
                       <div class="mb-4">
-                        <label class="form-label" for="so-profile-name">Name</label>
-                        <input type="text" class="form-control" id="so-profile-name" name="so-profile-name" value="George Taylor">
+                        <label class="form-label" for="so-profile-phone">Phone</label>
+                        <input type="text" class="form-control" id="so-profile-phon" name="phone" value="{{Auth::user()->phone}}">
                       </div>
                       <div class="mb-4">
                         <label class="form-label" for="so-profile-email">Email</label>
-                        <input type="email" class="form-control" id="so-profile-email" name="so-profile-email" value="g.taylor@example.com">
+                        <input type="email" class="form-control" id="so-profile-email" name="email" value="{{Auth::user()->email}}">
                       </div>
                     </div>
                     <!-- END Personal -->
@@ -478,47 +184,14 @@
                     <div class="block-content block-content-full">
                       <div class="mb-4">
                         <label class="form-label" for="so-profile-password">Current Password</label>
-                        <input type="password" class="form-control" id="so-profile-password" name="so-profile-password">
+                        <input type="password" class="form-control" id="so-profile-password" name="current_password" value="{{Auth::user()->password}}">
                       </div>
                       <div class="mb-4">
                         <label class="form-label" for="so-profile-new-password">New Password</label>
-                        <input type="password" class="form-control" id="so-profile-new-password" name="so-profile-new-password">
-                      </div>
-                      <div class="mb-4">
-                        <label class="form-label" for="so-profile-new-password-confirm">Confirm New Password</label>
-                        <input type="password" class="form-control" id="so-profile-new-password-confirm" name="so-profile-new-password-confirm">
+                        <input type="password" class="form-control" id="so-profile-new-password" name="new_password" value="">
                       </div>
                     </div>
                     <!-- END Password Update -->
-
-                    <!-- Options -->
-                    <div class="block-content block-content-sm block-content-full bg-body">
-                      <span class="text-uppercase fs-sm fw-bold">Options</span>
-                    </div>
-                    <div class="block-content">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="so-settings-status" name="so-settings-status">
-                        <label class="form-check-label fw-semibold" for="so-settings-status">Online Status</label>
-                      </div>
-                      <p class="text-muted fs-sm">
-                        Make your online status visible to other users of your app
-                      </p>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="so-settings-notifications" name="so-settings-notifications">
-                        <label class="form-check-label fw-semibold" for="so-settings-notifications">Notifications</label>
-                      </div>
-                      <p class="text-muted fs-sm">
-                        Receive desktop notifications regarding your projects and sales
-                      </p>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="so-settings-updates" name="so-settings-updates">
-                        <label class="form-check-label fw-semibold" for="so-settings-updates">Auto Updates</label>
-                      </div>
-                      <p class="text-muted fs-sm">
-                        If enabled, we will keep all your applications and servers up to date with the most recent features automatically
-                      </p>
-                    </div>
-                    <!-- END Options -->
 
                     <!-- Submit -->
                     <div class="block-content block-content-full border-top">

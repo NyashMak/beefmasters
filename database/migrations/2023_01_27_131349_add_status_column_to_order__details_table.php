@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('order__details', function (Blueprint $table) {
-            $table->string('sid')->index();
+            $table->string('status')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('order__details', function (Blueprint $table) {
-            $table->dropColumn('sid');
+            $table->dropColumn('status');
         });
     }
 };
