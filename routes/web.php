@@ -18,6 +18,11 @@ use App\Http\Controllers\PaymentDetailController;
 
 
 
+Route::get('/profile', [BMHomeController::class, 'profile'])->name('profile');
+Route::get('/profile/show', [BMHomeController::class, 'showProfile'])->name('show-profile');
+Route::post('profile/update/{id}', [BMHomeController::class, 'updateProfile'])->name('update-profile');
+
+
 // Shop_Front Routing
 Route::get('/', [BMHomeController::class, 'index']
 )->name('home');

@@ -79,7 +79,7 @@
 										<li><a href="{{route('about')}}">About</a></li>
 									</ul>
 									<div class="logo px-4" >
-										<a href="index.html"><img src="{{asset('assets/butcher/images/logo/')}}" alt="logo"></a>
+										<a href="index.html"><img src="{{asset('assets/butcher/images/logo/02.png')}}" alt="logo"></a>
 									</div>
 									<ul class="lab-ul">
 										<li>
@@ -128,6 +128,11 @@
 												</div>
 											</div>
 										</li>
+										{{-- <li>
+											<div>
+												<i class="icofont-user"></i>	
+											</div>
+										</li> --}}
 										<li>
 											<div class="search-option">
 												<i class="icofont-search-2"></i>
